@@ -18,14 +18,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp" />
 
-    <!--android:src="@drawable/logo"-->
     <ImageView android:id="@+id/main_imageview_logo"
+        android:src="@drawable/logo"
         android:contentDescription="@string/main_imageview_logo_description"
+        android:adjustViewBounds="true"
+        android:maxWidth="@dimen/main_imageview_logo_size"
+        android:maxHeight="@dimen/main_imageview_logo_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp" />
+        android:layout_marginTop="120dp" />
 
     <Button android:id="@+id/main_button_create"
         android:text="@string/main_button_create"
