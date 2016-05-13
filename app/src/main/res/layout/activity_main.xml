@@ -9,8 +9,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mattqunell.receipts.Main">
 
-    <TextView
+    <TextView android:id="@+id/main_textview_intro"
+        android:text="@string/main_textview_intro"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
+
+    <!--android:src="@drawable/logo"-->
+    <ImageView android:id="@+id/main_imageview_logo"
+        android:contentDescription="@string/main_imageview_logo_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp" />
+
+    <Button android:id="@+id/main_button_create"
+        android:text="@string/main_button_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/main_button_login" />
+
+    <Button android:id="@+id/main_button_login"
+        android:text="@string/main_button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>
