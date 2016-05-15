@@ -14,21 +14,20 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonCreate = (Button) findViewById(R.id.main_button_create);
-        if (buttonCreate != null) {
-            buttonCreate.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(new Intent(Main.this, Create.class));
-                }
-            });
-        }
+        assert buttonCreate != null;
+        buttonCreate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Main.this, Create.class));
+            }
+        });
 
         Button buttonLogin = (Button) findViewById(R.id.main_button_login);
-        if (buttonLogin != null) {
-            buttonLogin.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(new Intent(Main.this, Login.class));
-                }
-            });
-        }
+        assert buttonLogin != null;
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Main.this, Login.class));
+            }
+        });
+
     }
 }

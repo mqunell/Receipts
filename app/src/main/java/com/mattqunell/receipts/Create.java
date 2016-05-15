@@ -15,16 +15,20 @@ public class Create extends AppCompatActivity {
 
         // create_button_clear
         Button buttonClear = (Button) findViewById(R.id.create_button_clear);
+        assert buttonClear != null;
         buttonClear.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Set the EditTexts to ""
                 EditText createEdittextUsername = (EditText) findViewById(R.id.create_edittext_username);
+                assert createEdittextUsername != null;
                 createEdittextUsername.setText("");
 
                 EditText createEdittextPasswordInput = (EditText) findViewById(R.id.create_edittext_passwordInput);
+                assert createEdittextPasswordInput != null;
                 createEdittextPasswordInput.setText("");
 
                 EditText createEdittextPasswordConfirm = (EditText) findViewById(R.id.create_edittext_passwordConfirm);
+                assert createEdittextPasswordConfirm != null;
                 createEdittextPasswordConfirm.setText("");
 
                 // Give focus to create_edittext_username
