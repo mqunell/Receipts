@@ -30,16 +30,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp" />
 
-    <Button android:id="@+id/main_button_create"
-        android:text="@string/main_button_create"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/main_button_login" />
-
     <Button android:id="@+id/main_button_login"
         android:text="@string/main_button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
+
+    <Button android:id="@+id/main_button_create"
+        android:text="@string/main_button_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/main_button_login" />
 
 </RelativeLayout>
