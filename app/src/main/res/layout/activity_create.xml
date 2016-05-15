@@ -9,4 +9,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mattqunell.receipts.Create">
 
+    <EditText android:id="@+id/create_edittext_username"
+        android:hint="@string/create_edittext_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText android:id="@+id/create_edittext_passwordInput"
+        android:hint="@string/create_edittext_passwordInput"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_edittext_username" />
+
+    <EditText android:id="@+id/create_edittext_passwordConfirm"
+        android:hint="@string/create_edittext_passwordConfirm"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_edittext_passwordInput" />
+
+    <Button android:id="@+id/create_button_clear"
+        android:text="@string/create_button_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <Button android:id="@+id/create_button_submit"
+        android:text="@string/create_button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/create_button_clear" />
+
 </RelativeLayout>

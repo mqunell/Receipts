@@ -9,5 +9,11 @@
     <string name="main_button_create">Create Account</string>
     <string name="main_button_login">Log In</string>
 
+    <!-- Create -->
+    <string name="create_edittext_username">Username</string>
+    <string name="create_edittext_passwordInput">Password</string>
+    <string name="create_edittext_passwordConfirm">Confirm password</string>
+    <string name="create_button_clear">Clear</string>
+    <string name="create_button_submit">Submit</string>
 
 </resources>
