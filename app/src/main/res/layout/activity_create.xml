@@ -11,6 +11,7 @@
 
     <EditText android:id="@+id/create_edittext_username"
         android:hint="@string/create_edittext_username"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
