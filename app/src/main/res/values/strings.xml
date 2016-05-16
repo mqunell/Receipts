@@ -16,4 +16,10 @@
     <string name="create_button_clear">Clear</string>
     <string name="create_button_submit">Submit</string>
 
+    <!-- Login -->
+    <string name="login_edittext_username">Username</string>
+    <string name="login_edittext_password">Password</string>
+    <string name="login_button_login">Log In</string>
+    <string name="login_button_forgot">Forgot Password</string>
+
 </resources>
