@@ -1,5 +1,6 @@
 package com.mattqunell.receipts;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -87,7 +88,9 @@ public class Create extends AppCompatActivity {
                 FileOutputStream fileOutputStream = openFileOutput(username, MODE_PRIVATE);
                 fileOutputStream.write(password.getBytes());
                 fileOutputStream.close();
-                Toast.makeText(getApplicationContext(), "Account created", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), "Account created; logging in", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Create.this, Home.class));
             }
             catch (IOException e) {
                 e.printStackTrace();
