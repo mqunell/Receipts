@@ -23,4 +23,9 @@
     <string name="login_button_login">Log In</string>
     <string name="login_button_forgot">Forgot Password</string>
 
+    <!-- Home -->
+    <string name="home_button_add">Add new receipt</string>
+    <string name="home_button_new">New receipts</string>
+    <string name="home_button_old">Old receipts</string>
+
 </resources>
