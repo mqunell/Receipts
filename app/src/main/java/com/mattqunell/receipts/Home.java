@@ -15,7 +15,7 @@ public class Home extends AppCompatActivity {
 
 
     public void addReceipt(View v) {
-        //startActivity(new Intent(Home.this, Add.class));
+        startActivity(new Intent(Home.this, Add.class));
     }
 
 

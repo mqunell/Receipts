@@ -30,6 +30,8 @@
     <string name="home_button_old">Old receipts</string>
 
     <!-- Add -->
+    <string name="add_edittext_place">Place</string>
+    <string name="add_edittext_amount">Amount</string>
     <string name="add_radio_cardOne">Card 1</string>
     <string name="add_radio_cardTwo">Card 2</string>
     <string name="add_radio_cardThree">Card 3</string>

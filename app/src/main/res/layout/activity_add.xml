@@ -9,7 +9,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mattqunell.receipts.Add">
 
-    <LinearLayout android:id="@+id/add_layout_radio"
+    <DatePicker android:id="@+id/add_datepicker_date"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText android:id="@+id/add_edittext_place"
+        android:hint="@string/add_edittext_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_datepicker_date" />
+
+    <EditText android:id="@+id/add_edittext_amount"
+        android:hint="@string/add_edittext_amount"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_edittext_place"/>
+
+    <RadioGroup android:id="@+id/add_layout_radio"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +51,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/add_radio_cardThree" />
-    </LinearLayout>
+    </RadioGroup>
 
     <LinearLayout android:id="@+id/add_layout_button"
         android:orientation="horizontal"
