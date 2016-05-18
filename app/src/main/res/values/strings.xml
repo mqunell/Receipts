@@ -3,6 +3,7 @@
     <string name="title_activity_create">Create Account</string>
     <string name="title_activity_login">Log In</string>
     <string name="title_activity_home">Receipts</string>
+    <string name="title_activity_add">Add Receipt</string>
 
     <!-- Main -->
     <string name="main_textview_intro">Receipts</string>
@@ -27,5 +28,12 @@
     <string name="home_button_add">Add new receipt</string>
     <string name="home_button_new">New receipts</string>
     <string name="home_button_old">Old receipts</string>
+
+    <!-- Add -->
+    <string name="add_radio_cardOne">Card 1</string>
+    <string name="add_radio_cardTwo">Card 2</string>
+    <string name="add_radio_cardThree">Card 3</string>
+    <string name="add_button_submit">Submit</string>
+    <string name="add_button_clear">Clear</string>
 
 </resources>
