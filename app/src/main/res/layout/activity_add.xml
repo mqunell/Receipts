@@ -17,22 +17,33 @@
 
     <EditText android:id="@+id/add_edittext_place"
         android:hint="@string/add_edittext_place"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/add_datepicker_date" />
+
+    <EditText android:id="@+id/add_edittext_item"
+        android:hint="@string/add_edittext_item"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_edittext_place"
+        android:layout_marginTop="20dp" />
 
     <EditText android:id="@+id/add_edittext_amount"
         android:hint="@string/add_edittext_amount"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/add_edittext_place"/>
+        android:layout_below="@id/add_edittext_item"
+        android:layout_marginTop="20dp" />
 
     <RadioGroup android:id="@+id/add_layout_radio"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/add_layout_button" >
+        android:layout_below="@id/add_edittext_amount"
+        android:layout_marginTop="20dp" >
 
         <RadioButton android:id="@+id/add_radio_cardOne"
             android:layout_width="wrap_content"

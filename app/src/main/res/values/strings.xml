@@ -31,6 +31,7 @@
 
     <!-- Add -->
     <string name="add_edittext_place">Place</string>
+    <string name="add_edittext_item">Item(s)</string>
     <string name="add_edittext_amount">Amount</string>
     <string name="add_radio_cardOne">Card 1</string>
     <string name="add_radio_cardTwo">Card 2</string>
