@@ -10,6 +10,7 @@
     <string name="main_imageview_logo_description">Logo</string>
     <string name="main_button_create">Create Account</string>
     <string name="main_button_login">Log In</string>
+    <string name="main_button_skip">Skip</string>
 
     <!-- Create -->
     <string name="create_edittext_username">Username</string>

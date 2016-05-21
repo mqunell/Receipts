@@ -29,5 +29,12 @@ public class Main extends AppCompatActivity {
             }
         });
 
+        Button buttonSkip = (Button) findViewById(R.id.main_button_skip);
+        assert buttonSkip != null;
+        buttonSkip.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Main.this, Home.class));
+            }
+        });
     }
 }
