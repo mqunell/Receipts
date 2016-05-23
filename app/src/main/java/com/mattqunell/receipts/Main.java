@@ -12,29 +12,23 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        Button buttonCreate = (Button) findViewById(R.id.main_button_create);
-        assert buttonCreate != null;
-        buttonCreate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(Main.this, Create.class));
-            }
-        });
 
-        Button buttonLogin = (Button) findViewById(R.id.main_button_login);
-        assert buttonLogin != null;
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(Main.this, Login.class));
-            }
-        });
+    // main_button_create
+    public void mainButtonCreate(View v) {
+        startActivity(new Intent(Main.this, Create.class));
+    }
 
-        Button buttonSkip = (Button) findViewById(R.id.main_button_skip);
-        assert buttonSkip != null;
-        buttonSkip.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(Main.this, Home.class));
-            }
-        });
+
+    // main_button_login
+    public void mainButtonLogin(View v) {
+        startActivity(new Intent(Main.this, Login.class));
+    }
+
+
+    // main_button_skip
+    public void mainButtonSkip(View v) {
+        startActivity(new Intent(Main.this, Home.class));
     }
 }

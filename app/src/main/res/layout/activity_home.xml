@@ -11,20 +11,20 @@
 
     <Button android:id="@+id/home_button_add"
         android:text="@string/home_button_add"
-        android:onClick="addReceipt"
+        android:onClick="homeButtonAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button android:id="@+id/home_button_new"
         android:text="@string/home_button_new"
-        android:onClick="newReceipts"
+        android:onClick="homeButtonNew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/home_button_add" />
 
     <Button android:id="@+id/home_button_old"
         android:text="@string/home_button_old"
-        android:onClick="oldReceipts"
+        android:onClick="homeButtonOld"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/home_button_new" />

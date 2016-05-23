@@ -31,14 +31,14 @@
 
     <Button android:id="@+id/create_button_clear"
         android:text="@string/create_button_clear"
-        android:onClick="buttonClear"
+        android:onClick="createButtonClear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
     <Button android:id="@+id/create_button_submit"
         android:text="@string/create_button_submit"
-        android:onClick="buttonSubmit"
+        android:onClick="createButtonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/create_button_clear" />

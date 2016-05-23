@@ -27,7 +27,9 @@ public class Add extends AppCompatActivity {
         radiogroupLayoutRadio = (RadioGroup) findViewById(R.id.add_layout_radio);
     }
 
-    public void buttonSubmit(View v) {
+
+    // add_button_submit
+    public void addButtonSubmit(View v) {
         /* TODO: Add/test these
          * Acquire the date from the DatePicker
          * Figure out which card RadioButton was selected
@@ -50,7 +52,9 @@ public class Add extends AppCompatActivity {
 
     }
 
-    public void buttonClear(View v) {
+
+    // add_button_clear
+    public void addButtonClear(View v) {
         /* TODO: Add/test these
          * Set the DatePicker to the current date
          * Clear the EditTexts

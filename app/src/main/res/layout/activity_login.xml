@@ -24,13 +24,14 @@
 
     <Button android:id="@+id/login_button_login"
         android:text="@string/login_button_login"
-        android:onClick="logIn"
+        android:onClick="loginButtonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_edittext_password" />
 
     <Button android:id="@+id/login_button_forgot"
         android:text="@string/login_button_forgot"
+        android:onClick="loginButtonForgot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_button_login" />

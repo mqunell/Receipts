@@ -32,18 +32,21 @@
 
     <Button android:id="@+id/main_button_create"
         android:text="@string/main_button_create"
+        android:onClick="mainButtonCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/main_button_login" />
 
     <Button android:id="@+id/main_button_login"
         android:text="@string/main_button_login"
+        android:onClick="mainButtonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/main_button_skip" />
 
     <Button android:id="@+id/main_button_skip"
         android:text="@string/main_button_skip"
+        android:onClick="mainButtonSkip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />

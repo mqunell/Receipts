@@ -18,7 +18,6 @@ public class Login extends AppCompatActivity {
     EditText edittextUsername;
     EditText edittextPassword;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,21 +25,11 @@ public class Login extends AppCompatActivity {
 
         edittextUsername = (EditText) findViewById(R.id.login_edittext_username);
         edittextPassword = (EditText) findViewById(R.id.login_edittext_password);
-
-        /*
-        Button buttonLogin = (Button) findViewById(R.id.login_button_login);
-        assert buttonLogin != null;
-        buttonLogin.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                // Until Create is functional, start Home by default
-                startActivity(new Intent(Login.this, Home.class));
-            }
-        });
-        */
     }
 
 
-    public void logIn(View view) {
+    // login_button_login
+    public void loginButtonLogin(View view) {
         String username = edittextUsername.getText().toString();
         String password = edittextPassword.getText().toString();
 
@@ -71,5 +60,11 @@ public class Login extends AppCompatActivity {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    // login_button_forgot
+    public void loginButtonForgot(View v) {
+        //startActivity(new Intent(Login.this, Forgot.class));
     }
 }

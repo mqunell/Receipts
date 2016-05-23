@@ -14,17 +14,20 @@ public class Home extends AppCompatActivity {
     }
 
 
-    public void addReceipt(View v) {
+    // home_button_add
+    public void homeButtonAdd(View v) {
         startActivity(new Intent(Home.this, Add.class));
     }
 
 
-    public void newReceipts(View v) {
+    // home_button_new
+    public void homeButtonNew(View v) {
         //startActivity(new Intent(Home.this, New.class));
     }
 
 
-    public void oldReceipts(View v) {
+    // home_button_old
+    public void homeButtonOld(View v) {
         //startActivity(new Intent(Home.this, Old.class));
     }
 }

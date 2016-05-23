@@ -67,7 +67,7 @@
         <Button android:id="@+id/add_button_submit"
             android:text="@string/add_button_submit"
             style="?android:attr/buttonBarButtonStyle"
-            android:onClick="buttonSubmit"
+            android:onClick="addButtonSubmit"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -75,7 +75,7 @@
         <Button android:id="@+id/add_button_clear"
             android:text="@string/add_button_clear"
             style="?android:attr/buttonBarButtonStyle"
-            android:onClick="buttonClear"
+            android:onClick="addButtonClear"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
