@@ -1,5 +1,6 @@
 package com.mattqunell.receipts;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,15 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class Add extends AppCompatActivity {
     DatePicker datepickerDate;
@@ -71,11 +80,8 @@ public class Add extends AppCompatActivity {
         // Create a helper class to manage the file?
         // DataManager.write(fullDate, place, amount, card);
 
-        /*
-         * TODO: Test CvsManager here first; try saving a file to Downloads or something, to be able
-         * TODO: to look at it while appending data and moving data from New->Old. If it works, then
-         * TODO: create the Java class to use as a helper
-         */
+        createFile();
+        readFile();
     }
 
 
@@ -93,5 +99,62 @@ public class Add extends AppCompatActivity {
         edittextAmount.setText("");
 
         radiogroupLayoutRadio.clearCheck();
+    }
+
+
+    // Helper files - MOVE TO A NEW CLASS ONCE WORKING PROPERLY
+    public void createFile() {
+        String fileName = "receipts.csv";
+        String header = "Date,Place,Amount,Card";
+        FileOutputStream outputStream;
+
+        if (!new File(getFilesDir(), fileName).exists()) {
+            try {
+                outputStream = openFileOutput(fileName, MODE_PRIVATE);
+                outputStream.write(header.getBytes());
+                outputStream.close();
+                System.out.println("File created");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("File creation error");
+            }
+        }
+        else {
+            System.out.println("File not created; already exists");
+            try {
+                outputStream = openFileOutput(fileName, MODE_APPEND);
+                outputStream.write("\ntest".getBytes());
+                outputStream.close();
+                System.out.println("File appended?");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("File append error");
+            }
+        }
+    }
+
+
+    public void readFile() {
+        try {
+            String text;
+
+            FileInputStream fileInputStream = openFileInput("receipts.csv");
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            while ((text = bufferedReader.readLine()) != null) {
+                stringBuilder.append(text);
+            }
+            System.out.println(stringBuilder);
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
