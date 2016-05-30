@@ -22,7 +22,7 @@ public class Home extends AppCompatActivity {
 
     // home_button_new
     public void homeButtonNew(View v) {
-        //startActivity(new Intent(Home.this, New.class));
+        startActivity(new Intent(Home.this, New.class));
     }
 
 
