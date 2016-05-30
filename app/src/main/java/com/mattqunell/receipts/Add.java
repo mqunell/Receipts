@@ -15,8 +15,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -80,8 +84,10 @@ public class Add extends AppCompatActivity {
         // Create a helper class to manage the file?
         // DataManager.write(fullDate, place, amount, card);
 
-        createFile();
-        readFile();
+
+
+        writeCsvFile();
+        printCsvFile();
     }
 
 
@@ -99,62 +105,96 @@ public class Add extends AppCompatActivity {
         edittextAmount.setText("");
 
         radiogroupLayoutRadio.clearCheck();
+
+
+
+        File f = new File(getFilesDir() + "/receipts.csv");
+        f.delete();
     }
 
 
-    // Helper files - MOVE TO A NEW CLASS ONCE WORKING PROPERLY
-    public void createFile() {
+
+    public void writeCsvFile() {
         String fileName = "receipts.csv";
         String header = "Date,Place,Amount,Card";
-        FileOutputStream outputStream;
+        String fileLoc = getFilesDir() + "/receipts.csv";
 
-        if (!new File(getFilesDir(), fileName).exists()) {
-            try {
-                outputStream = openFileOutput(fileName, MODE_PRIVATE);
-                outputStream.write(header.getBytes());
-                outputStream.close();
-                System.out.println("File created");
+        FileWriter fileWriter;
+
+        try {
+            // If the file already exists, append to it
+            if (new File(getFilesDir(), fileName).exists()) {
+                fileWriter = new FileWriter(fileLoc, true);
             }
-            catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("File creation error");
+            // If the file doesn't already exist, create it with a header
+            else {
+                fileWriter = new FileWriter(fileLoc);
+                fileWriter.append(header);
+                fileWriter.append("\n");
             }
+
+            // Append the receipt data with comma deliminators, followed by a new line
+            fileWriter.append("test one");
+            fileWriter.append(",");
+            fileWriter.append("test two");
+            fileWriter.append(",");
+            fileWriter.append("test three");
+            fileWriter.append("\n");
+
+            // Flush and close fileWriter
+            System.out.println("writeCsvFile - CSV file created/appended successfully");
+            fileWriter.flush();
+            fileWriter.close();
         }
-        else {
-            System.out.println("File not created; already exists");
-            try {
-                outputStream = openFileOutput(fileName, MODE_APPEND);
-                outputStream.write("\ntest".getBytes());
-                outputStream.close();
-                System.out.println("File appended?");
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("File append error");
-            }
+        catch (Exception e) {
+            System.out.println("writeCsvFile - Error in try/catch");
+            e.printStackTrace();
         }
     }
 
+    public ArrayList<String[]> readCsvFile() {
+        String fileLoc = getFilesDir() + "/receipts.csv";
 
-    public void readFile() {
+        BufferedReader fileReader;
+
+        // Create an ArrayList of String arrays to be created from the CSV file
+        ArrayList<String[]> receipts = new ArrayList<>();
+
+        // String to be used for each line of data in the CSV file
+        String line;
+
         try {
-            String text;
+            if (new File(fileLoc).exists()) {
+                // Create the BufferedReader
+                fileReader = new BufferedReader(new FileReader(fileLoc));
 
-            FileInputStream fileInputStream = openFileInput("receipts.csv");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuilder stringBuilder = new StringBuilder();
+                // Skip the header, then read the file line by line
+                fileReader.readLine();
+                while ((line = fileReader.readLine()) != null) {
+                    String[] data = line.split(",");
+                    receipts.add(data);
+                }
 
-            while ((text = bufferedReader.readLine()) != null) {
-                stringBuilder.append(text);
+                // Close fileReader
+                fileReader.close();
+            } else {
+                System.out.println("readCsvFile - No file found to read");
             }
-            System.out.println(stringBuilder);
         }
-        catch (FileNotFoundException e) {
+        catch (Exception e) {
+            System.out.println("readCsvFile - Error in try/catch");
             e.printStackTrace();
         }
-        catch (IOException e) {
-            e.printStackTrace();
+
+        return receipts;
+    }
+
+    public void printCsvFile() {
+        ArrayList<String[]> receipts = readCsvFile();
+
+        // Print each receipt individually
+        for (String[] s : receipts) {
+            System.out.println(Arrays.toString(s));
         }
     }
 }
