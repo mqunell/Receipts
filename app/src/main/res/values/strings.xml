@@ -45,4 +45,8 @@
     <string name="new_action_sort">Sort Receipts</string>
     <string name="new_action_archive">Archive Receipts</string>
 
+    <!-- Archived -->
+    <string name="archived_action_sort">Sort Receipts</string>
+    <string name="archived_action_clear">Clear Receipts</string>
+
 </resources>

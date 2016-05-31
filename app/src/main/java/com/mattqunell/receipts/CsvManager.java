@@ -115,12 +115,17 @@ public class CsvManager {
             writeCsvFile(date, place, amount, cardNum, dir, "archived_receipts.csv");
         }
 
-        //clearReceipts(dir, "receipts.csv");
+        clearReceipts(dir, "receipts.csv");
     }
 
 
     // Clear the receipts from the specified file
-
+    // TODO: Refresh the activity on clear, use the .delete() boolean for success/fail Toasts
+    public static void clearReceipts(String dir, String fileName) {
+        String fileLoc = dir + fileName;
+        File f = new File(fileLoc);
+        f.delete();
+    }
 
 
     //TESTING: Prints the receipts from the CSV file
