@@ -30,8 +30,14 @@
             android:label="@string/title_activity_home" />
         <activity
             android:name=".Add"
-            android:label="@string/title_activity_add" />
-        <activity android:name=".New"></activity>
+            android:label="@string/title_activity_add"
+            android:parentActivityName=".Home" />
+        <activity
+            android:name=".New"
+            android:label="@string/title_activity_new"
+            android:parentActivityName=".Home" />
+
+
     </application>
 
 </manifest>
