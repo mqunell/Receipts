@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class New extends AppCompatActivity {
-    ArrayList<String> receipts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,7 @@ public class New extends AppCompatActivity {
 
         // ListView adaptor
         ArrayList<String[]> r = CsvManager.readCsvFile(getFilesDir().toString());
-        receipts = new ArrayList<>();
+        ArrayList<String> receipts = new ArrayList<>();
 
         for (String[] s : r) {
             receipts.add(Arrays.toString(s));

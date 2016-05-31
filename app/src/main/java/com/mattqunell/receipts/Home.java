@@ -28,6 +28,6 @@ public class Home extends AppCompatActivity {
 
     // home_button_old
     public void homeButtonOld(View v) {
-        //startActivity(new Intent(Home.this, Old.class));
+        startActivity(new Intent(Home.this, Archived.class));
     }
 }
