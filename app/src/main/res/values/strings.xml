@@ -5,6 +5,7 @@
     <string name="title_activity_home">Receipts</string>
     <string name="title_activity_add">Add Receipt</string>
     <string name="title_activity_new">New Receipts</string>
+    <string name="title_activity_archived">Archived Receipts</string>
 
     <!-- Main -->
     <string name="main_textview_intro">Receipts</string>
