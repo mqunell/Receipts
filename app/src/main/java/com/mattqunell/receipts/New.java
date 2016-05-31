@@ -60,7 +60,7 @@ public class New extends AppCompatActivity {
         }
         if (id == R.id.new_action_archive) {
             // Rename the receipt file to archived_receipts
-
+            CsvManager.archiveReceipts(dir);
         }
 
         return super.onOptionsItemSelected(item);

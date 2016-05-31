@@ -99,9 +99,28 @@ public class CsvManager {
 
 
     // Move receipts from New to Archived
-    /*public static void archiveReceipts {
+    public static void archiveReceipts(String dir) {
+        String date;
+        String place;
+        String amount;
+        int cardNum;
 
-    }*/
+        ArrayList<String[]> receipts = readCsvFile(dir, "receipts.csv");
+
+        for (String[] s : receipts) {
+            date = s[0];
+            place = s[1];
+            amount = s[2];
+            cardNum = Integer.parseInt(s[3]);
+            writeCsvFile(date, place, amount, cardNum, dir, "archived_receipts.csv");
+        }
+
+        //clearReceipts(dir, "receipts.csv");
+    }
+
+
+    // Clear the receipts from the specified file
+
 
 
     //TESTING: Prints the receipts from the CSV file
