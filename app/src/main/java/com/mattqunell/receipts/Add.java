@@ -21,6 +21,10 @@ public class Add extends AppCompatActivity {
     RadioButton radioCardTwo;
     RadioButton radioCardThree;
 
+    private String dir;
+    private String filenameNew;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,9 @@ public class Add extends AppCompatActivity {
         radioCardOne = (RadioButton) findViewById(R.id.add_radio_cardOne);
         radioCardTwo = (RadioButton) findViewById(R.id.add_radio_cardTwo);
         radioCardThree = (RadioButton) findViewById(R.id.add_radio_cardThree);
+
+        dir = getFilesDir().toString();
+        filenameNew = "receipts.csv";
     }
 
 
@@ -66,7 +73,7 @@ public class Add extends AppCompatActivity {
         // If all fields were filled out
         if (place.length() != 0 && amount.length() != 0 && cardNum != -1) {
             // If the receipt was appended successfully
-            if (CsvManager.writeCsvFile(fullDate, place, amount, cardNum, getFilesDir().toString())) {
+            if (CsvManager.writeCsvFile(fullDate, place, amount, cardNum, dir, filenameNew)) {
                 Toast.makeText(getApplicationContext(), "Receipt submitted successfully", Toast.LENGTH_SHORT).show();
                 addButtonClear(v);
             }

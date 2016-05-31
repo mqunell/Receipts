@@ -11,14 +11,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class New extends AppCompatActivity {
+    private String dir;
+    private String filenameNew;
+    private String filenameArchived;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
 
+        dir = getFilesDir().toString();
+        filenameNew = "receipts.csv";
+        filenameArchived = "archived_receipts.csv";
+
         // ListView adaptor
-        ArrayList<String[]> r = CsvManager.readCsvFile(getFilesDir().toString());
+        ArrayList<String[]> r = CsvManager.readCsvFile(dir, filenameNew);
         ArrayList<String> receipts = new ArrayList<>();
 
         for (String[] s : r) {

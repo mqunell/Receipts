@@ -14,12 +14,11 @@ public class CsvManager {
     private static final String HEADER = "Date,Place,Amount,Card";
     private static final String COMMA = ",";
     private static final String NEW_LINE = "\n";
-    private static final String FILE_NAME = "receipts.csv";
 
 
     // Writes the given date, place, amount, and card number to the CSV file
-    public static boolean writeCsvFile(String date, String place, String amount, int cardNum, String dir) {
-        String fileLoc = dir + FILE_NAME;
+    public static boolean writeCsvFile(String date, String place, String amount, int cardNum, String dir, String fileName) {
+        String fileLoc = dir + fileName;
 
         FileWriter fileWriter;
 
@@ -61,8 +60,8 @@ public class CsvManager {
 
 
     // Returns and ArrayList of String arrays, which are the receipts
-    public static ArrayList<String[]> readCsvFile(String dir) {
-        String fileLoc = dir + FILE_NAME;
+    public static ArrayList<String[]> readCsvFile(String dir, String fileName) {
+        String fileLoc = dir + fileName;
 
         BufferedReader fileReader;
 
@@ -99,9 +98,15 @@ public class CsvManager {
     }
 
 
+    // Move receipts from New to Archived
+    /*public static void archiveReceipts {
+
+    }*/
+
+
     //TESTING: Prints the receipts from the CSV file
-    public static void printCsvFile(String dir) {
-        ArrayList<String[]> receipts = readCsvFile(dir);
+    public static void printCsvFile(String dir, String fileName) {
+        ArrayList<String[]> receipts = readCsvFile(dir, fileName);
 
         // Print each receipt individually
         for (String[] s : receipts) {
