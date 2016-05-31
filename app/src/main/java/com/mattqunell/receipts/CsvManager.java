@@ -27,14 +27,14 @@ public class CsvManager {
             // If the file already exists, append to it
             if (new File(fileLoc).exists()) {
                 fileWriter = new FileWriter(fileLoc, true);
-                System.out.println("Appending to existing");
+                //TESTING: System.out.println("Appending to existing");
             }
             // If the file doesn't already exist, create it with a header
             else {
                 fileWriter = new FileWriter(fileLoc);
                 fileWriter.append(HEADER);
                 fileWriter.append(NEW_LINE);
-                System.out.println("Writing new file");
+                //TESTING: System.out.println("Writing new file");
             }
 
             // Append the receipt data with comma deliminators, followed by a new line
@@ -99,7 +99,7 @@ public class CsvManager {
     }
 
 
-    // Prints the receipts from the CSV file - ONLY FOR TESTING PURPOSES
+    //TESTING: Prints the receipts from the CSV file
     public static void printCsvFile(String dir) {
         ArrayList<String[]> receipts = readCsvFile(dir);
 

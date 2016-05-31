@@ -40,4 +40,8 @@
     <string name="add_button_submit">Submit</string>
     <string name="add_button_clear">Clear</string>
 
+    <!-- New -->
+    <string name="new_action_sort">Sort Receipts</string>
+    <string name="new_action_archive">Archive Receipts</string>
+
 </resources>
