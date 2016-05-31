@@ -18,7 +18,7 @@ public class CsvManager {
 
 
     // Writes the given date, place, amount, and card number to the CSV file
-    public static void writeCsvFile(String date, String place, String amount, int cardNum, String dir) {
+    public static boolean writeCsvFile(String date, String place, String amount, int cardNum, String dir) {
         String fileLoc = dir + FILE_NAME;
 
         FileWriter fileWriter;
@@ -48,13 +48,14 @@ public class CsvManager {
             fileWriter.append(NEW_LINE);
 
             // Flush and close fileWriter
-            System.out.println("writeCsvFile - CSV file created/appended successfully");
             fileWriter.flush();
             fileWriter.close();
+            return true;
         }
         catch (Exception e) {
             System.out.println("writeCsvFile - Error in try/catch");
             e.printStackTrace();
+            return false;
         }
     }
 

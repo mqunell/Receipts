@@ -8,6 +8,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 import java.util.Calendar;
 
 public class Add extends AppCompatActivity {
@@ -36,11 +38,6 @@ public class Add extends AppCompatActivity {
 
     // add_button_submit
     public void addButtonSubmit(View v) {
-        /* TODO: Add/test these
-         * Figure out which card RadioButton was selected
-         * Create a helper class to manage writing to/reading the file; pass data to it
-         */
-
         // Parse the date
         String date = String.valueOf(datepickerDate.getDayOfMonth());
         String month = String.valueOf(datepickerDate.getMonth());
@@ -66,8 +63,20 @@ public class Add extends AppCompatActivity {
             cardNum = -1;
         }
 
-        //TESTING
-        CsvManager.writeCsvFile(fullDate, place, amount, cardNum, getFilesDir().toString());
+        // If all fields were filled out
+        if (place.length() != 0 && amount.length() != 0 && cardNum != -1) {
+            // If the receipt was appended successfully
+            if (CsvManager.writeCsvFile(fullDate, place, amount, cardNum, getFilesDir().toString())) {
+                Toast.makeText(getApplicationContext(), "Receipt submitted successfully", Toast.LENGTH_SHORT).show();
+                addButtonClear(v);
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Receipt submission failed", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Receipt not submitted - missing info", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -85,8 +94,5 @@ public class Add extends AppCompatActivity {
         edittextAmount.setText("");
 
         radiogroupLayoutRadio.clearCheck();
-
-        //TESTING
-        CsvManager.printCsvFile(getFilesDir().toString());
     }
 }
