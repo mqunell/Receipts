@@ -42,10 +42,10 @@ public class Add extends AppCompatActivity {
          */
 
         // Parse the date
-        int date = datepickerDate.getDayOfMonth();
-        int month = datepickerDate.getMonth();
-        int year = datepickerDate.getYear();
-        String fullDate = date + "/" + month + "/" + year;
+        String date = String.valueOf(datepickerDate.getDayOfMonth());
+        String month = String.valueOf(datepickerDate.getMonth());
+        String year = String.valueOf(datepickerDate.getYear());
+        String fullDate = month + "/" + date + "/" + year.substring(2);
 
         // Place and amount
         String place = edittextPlace.getText().toString();
