@@ -98,7 +98,7 @@ public class CsvManager {
     }
 
 
-    // Move receipts from New to Archived
+    // Move receipts from NewReceipts to Archived
     public static void archiveReceipts(String dir) {
         String date;
         String place;

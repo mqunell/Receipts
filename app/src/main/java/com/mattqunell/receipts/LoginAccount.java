@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Login extends AppCompatActivity {
+public class LoginAccount extends AppCompatActivity {
     EditText edittextUsername;
     EditText edittextPassword;
 
@@ -47,7 +46,7 @@ public class Login extends AppCompatActivity {
 
             if (stringBuilder.toString().equals(password)) {
                 Toast.makeText(getApplicationContext(), "Logging in", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(Login.this, Home.class));
+                startActivity(new Intent(LoginAccount.this, Home.class));
             }
             else {
                 Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_LONG).show();
@@ -65,6 +64,6 @@ public class Login extends AppCompatActivity {
 
     // login_button_forgot
     public void loginButtonForgot(View v) {
-        //startActivity(new Intent(Login.this, Forgot.class));
+        //startActivity(new Intent(LoginAccount.this, Forgot.class));
     }
 }

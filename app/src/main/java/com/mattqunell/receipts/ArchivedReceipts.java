@@ -10,14 +10,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Archived extends AppCompatActivity {
+public class ArchivedReceipts extends AppCompatActivity {
     private String dir;
     private String filenameArchived;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_archived);
+        setContentView(R.layout.activity_archived_receipts);
 
         dir = getFilesDir().toString();
         filenameArchived = "archived_receipts.csv";

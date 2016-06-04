@@ -18,25 +18,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Create"
+            android:name=".CreateAccount"
             android:label="@string/title_activity_create"
             android:parentActivityName=".Main" />
         <activity
-            android:name=".Login"
+            android:name=".LoginAccount"
             android:label="@string/title_activity_login"
             android:parentActivityName=".Main" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home" />
         <activity
-            android:name=".Add"
+            android:name=".AddReceipt"
             android:label="@string/title_activity_add"
             android:parentActivityName=".Home" />
         <activity
-            android:name=".New"
+            android:name=".NewReceipts"
             android:label="@string/title_activity_new"
             android:parentActivityName=".Home" />
-        <activity android:name=".Archived"
+        <activity android:name=".ArchivedReceipts"
             android:label="@string/title_activity_archived"
             android:parentActivityName=".Home" />
 

@@ -10,7 +10,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class New extends AppCompatActivity {
+public class NewReceipts extends AppCompatActivity {
     private String dir;
     private String filenameNew;
     private String filenameArchived;
@@ -18,7 +18,7 @@ public class New extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new);
+        setContentView(R.layout.activity_new_receipts);
 
         dir = getFilesDir().toString();
         filenameNew = "receipts.csv";

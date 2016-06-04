@@ -14,14 +14,14 @@
     <string name="main_button_login">Log In</string>
     <string name="main_button_skip">Skip</string>
 
-    <!-- Create -->
+    <!-- CreateAccount -->
     <string name="create_edittext_username">Username</string>
     <string name="create_edittext_passwordInput">Password</string>
     <string name="create_edittext_passwordConfirm">Confirm password</string>
     <string name="create_button_clear">Clear</string>
     <string name="create_button_submit">Submit</string>
 
-    <!-- Login -->
+    <!-- LoginAccount -->
     <string name="login_edittext_username">Username</string>
     <string name="login_edittext_password">Password</string>
     <string name="login_button_login">Log In</string>
@@ -32,7 +32,7 @@
     <string name="home_button_new">New receipts</string>
     <string name="home_button_old">Archived receipts</string>
 
-    <!-- Add -->
+    <!-- AddReceipt -->
     <string name="add_edittext_place">Place and/or Item(s)</string>
     <string name="add_edittext_amount">Amount</string>
     <string name="add_radio_cardOne">Card 1</string>
@@ -41,11 +41,11 @@
     <string name="add_button_submit">Submit</string>
     <string name="add_button_clear">Clear</string>
 
-    <!-- New -->
+    <!-- NewReceipts -->
     <string name="new_action_sort">Sort Receipts</string>
     <string name="new_action_archive">Archive Receipts</string>
 
-    <!-- Archived -->
+    <!-- ArchivedReceipts -->
     <string name="archived_action_sort">Sort Receipts</string>
     <string name="archived_action_clear">Clear Receipts</string>
 

@@ -1,6 +1,5 @@
 package com.mattqunell.receipts;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class Add extends AppCompatActivity {
+public class AddReceipt extends AppCompatActivity {
     DatePicker datepickerDate;
     EditText edittextPlace;
     EditText edittextAmount;
@@ -28,7 +27,7 @@ public class Add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_add_receipt);
 
         datepickerDate = (DatePicker) findViewById(R.id.add_datepicker_date);
         edittextPlace = (EditText) findViewById(R.id.add_edittext_place);

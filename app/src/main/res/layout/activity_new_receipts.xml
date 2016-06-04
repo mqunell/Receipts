@@ -7,9 +7,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mattqunell.receipts.Archived">
+    tools:context=".NewReceipts">
 
-    <ListView android:id="@+id/archived_listview_archivedReceipts"
+    <ListView android:id="@+id/new_listview_newReceipts"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </RelativeLayout>

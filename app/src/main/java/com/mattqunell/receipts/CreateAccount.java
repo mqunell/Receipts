@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Create extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
     EditText edittextUsername;
     EditText edittextPasswordInput;
     EditText edittextPasswordConfirm;
@@ -19,7 +18,7 @@ public class Create extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.activity_create_account);
 
         edittextUsername = (EditText) findViewById(R.id.create_edittext_username);
         edittextPasswordInput = (EditText) findViewById(R.id.create_edittext_passwordInput);
@@ -41,7 +40,7 @@ public class Create extends AppCompatActivity {
                 fileOutputStream.close();
 
                 Toast.makeText(getApplicationContext(), "Account created; logging in", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Create.this, Home.class));
+                startActivity(new Intent(CreateAccount.this, Home.class));
             }
             catch (IOException e) {
                 e.printStackTrace();
