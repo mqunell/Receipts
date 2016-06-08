@@ -8,12 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class NewReceipts extends AppCompatActivity {
     private String dir;
-    private String filenameNew;
-    private String filenameArchived;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +18,9 @@ public class NewReceipts extends AppCompatActivity {
         setContentView(R.layout.activity_new_receipts);
 
         dir = getFilesDir().toString();
-        filenameNew = "new_receipts.txt";
-        filenameArchived = "archived_receipts.txt";
 
         // ListView adaptor
-        ArrayList<String> receipts = FileManager.readFile(dir, filenameNew);
+        ArrayList<String> receipts = FileManager.readFile(dir, Main.FILENAME_NEW);
 
         ListView listviewNewReceipts = (ListView) findViewById(R.id.new_listview_newReceipts);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, receipts);
@@ -43,19 +38,17 @@ public class NewReceipts extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Handle action bar item clicks
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.new_action_sort) {
-            // Sort the receipts
-
-        }
         if (id == R.id.new_action_archive) {
             // Rename the receipt file to archived_receipts
             FileManager.archiveReceipts(dir);
+        }
+        else if (id == R.id.new_action_clear) {
+            // Rename the receipt file to archived_receipts
+            FileManager.clearReceipts(dir, Main.FILENAME_NEW);
         }
 
         return super.onOptionsItemSelected(item);

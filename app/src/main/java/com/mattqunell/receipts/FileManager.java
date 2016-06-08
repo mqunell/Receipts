@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FileManager {
 
@@ -21,14 +20,12 @@ public class FileManager {
             // If the file already exists, append to it
             if (new File(fileLoc).exists()) {
                 fileWriter = new FileWriter(fileLoc, true);
-                //TESTING:
-                System.out.println("Appending to existing");
+                //TESTING: System.out.println("Appending to existing");
             }
             // If the file doesn't already exist, create it with a header
             else {
                 fileWriter = new FileWriter(fileLoc);
-                //TESTING:
-                System.out.println("Writing new file");
+                //TESTING: System.out.println("Writing new file");
             }
 
             // Append the receipt data with comma deliminators, followed by a new line
@@ -72,12 +69,13 @@ public class FileManager {
 
                 // Close fileReader
                 fileReader.close();
-            } else {
-                System.out.println("readFile - No file found to read");
+            }
+            else {
+                //TESTING: System.out.println("readFile - No file found to read");
             }
         }
         catch (Exception e) {
-            System.out.println("readFile - Error in try/catch");
+            //TESTING: System.out.println("readFile - Error in try/catch");
             e.printStackTrace();
         }
 
@@ -87,13 +85,13 @@ public class FileManager {
 
     // Move receipts from NewReceipts to Archived
     public static void archiveReceipts(String dir) {
-        ArrayList<String> receipts = readFile(dir, "new_receipts.txt");
+        ArrayList<String> receipts = readFile(dir, Main.FILENAME_NEW);
 
         for (String receipt : receipts) {
-            writeFile(receipt, dir, "archived_receipts.txt");
+            writeFile(receipt, dir, Main.FILENAME_ARCHIVED);
         }
 
-        clearReceipts(dir, "new_receipts.txt");
+        clearReceipts(dir, Main.FILENAME_NEW);
     }
 
 

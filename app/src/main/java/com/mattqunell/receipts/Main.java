@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Main extends AppCompatActivity {
+    public static final String FILENAME_NEW = "new_receipts.txt";
+    public static final String FILENAME_ARCHIVED = "archived_receipts.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
