@@ -38,7 +38,7 @@ public class AddReceipt extends AppCompatActivity {
         radioCardThree = (RadioButton) findViewById(R.id.add_radio_cardThree);
 
         dir = getFilesDir().toString();
-        filenameNew = "receipts.csv";
+        filenameNew = "new_receipts.txt";
     }
 
 
@@ -69,10 +69,12 @@ public class AddReceipt extends AppCompatActivity {
             cardNum = -1;
         }
 
+        String receipt = fullDate + "  " + place + "  " + amount + "  " + String.valueOf(cardNum);
+
         // If all fields were filled out
         if (place.length() != 0 && amount.length() != 0 && cardNum != -1) {
             // If the receipt was appended successfully
-            if (CsvManager.writeCsvFile(fullDate, place, amount, cardNum, dir, filenameNew)) {
+            if (FileManager.writeFile(receipt, dir, filenameNew)) {
                 Toast.makeText(getApplicationContext(), "Receipt submitted successfully", Toast.LENGTH_SHORT).show();
                 addButtonClear(v);
             }

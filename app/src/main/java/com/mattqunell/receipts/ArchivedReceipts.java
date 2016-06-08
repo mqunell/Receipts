@@ -20,15 +20,10 @@ public class ArchivedReceipts extends AppCompatActivity {
         setContentView(R.layout.activity_archived_receipts);
 
         dir = getFilesDir().toString();
-        filenameArchived = "archived_receipts.csv";
+        filenameArchived = "archived_receipts.txt";
 
         // ListView adaptor
-        ArrayList<String[]> r = CsvManager.readCsvFile(dir, filenameArchived);
-        ArrayList<String> receipts = new ArrayList<>();
-
-        for (String[] s : r) {
-            receipts.add(Arrays.toString(s));
-        }
+        ArrayList<String> receipts = FileManager.readFile(dir, filenameArchived);
 
         ListView listviewArchivedReceipts = (ListView) findViewById(R.id.archived_listview_archivedReceipts);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, receipts);
@@ -58,7 +53,7 @@ public class ArchivedReceipts extends AppCompatActivity {
         }
         if (id == R.id.archived_action_clear) {
             // Rename the receipt file to archived_receipts
-            CsvManager.clearReceipts(dir, filenameArchived);
+            FileManager.clearReceipts(dir, filenameArchived);
         }
 
         return super.onOptionsItemSelected(item);
