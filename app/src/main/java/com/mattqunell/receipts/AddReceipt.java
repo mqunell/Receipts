@@ -44,7 +44,7 @@ public class AddReceipt extends AppCompatActivity {
     public void addButtonSubmit(View v) {
         // Parse the date
         String date = String.valueOf(datepickerDate.getDayOfMonth());
-        String month = String.valueOf(datepickerDate.getMonth());
+        String month = String.valueOf(datepickerDate.getMonth() + 1);
         String year = String.valueOf(datepickerDate.getYear());
         String fullDate = month + "/" + date + "/" + year.substring(2);
 
