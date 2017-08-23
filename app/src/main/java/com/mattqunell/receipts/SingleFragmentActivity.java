@@ -10,6 +10,7 @@ import android.os.Bundle;
  */
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
+    // createFragment() must be implemented in child classes
     protected abstract Fragment createFragment();
 
     @Override
