@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <EditText
+        android:id="@+id/receipt_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:inputType="textCapWords"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Location"
+        tools:text="Location" />
+
+    <EditText
+        android:id="@+id/receipt_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/receipt_location"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="12.34"
+        tools:text="12.34" />
+
+    <CalendarView
+        android:id="@+id/receipt_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <RadioButton
+        android:id="@+id/receipt_radio_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Card 1"
+        tools:text="Card 1" />
+
+    <RadioButton
+        android:id="@+id/receipt_radio_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/receipt_radio_one"
+        app:layout_constraintLeft_toLeftOf="@+id/receipt_radio_one"
+        android:text="Card 2"
+        tools:text="Card 2" />
+
+    <RadioButton
+        android:id="@+id/receipt_radio_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/receipt_radio_two"
+        app:layout_constraintLeft_toLeftOf="@+id/receipt_radio_two"
+        android:text="Card 3"
+        tools:text="Card 3" />
+
+</android.support.constraint.ConstraintLayout>

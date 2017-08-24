@@ -26,7 +26,7 @@ public class ReceiptPagerActivity extends AppCompatActivity {
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                return null;
+                return new ReceiptFragment();
             }
 
             @Override
