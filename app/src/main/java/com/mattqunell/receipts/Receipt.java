@@ -15,43 +15,43 @@ class Receipt implements Comparable<Receipt> {
         mDate = new Date();
     }
 
-    public String getLocation() {
+    String getLocation() {
         return mLocation;
     }
 
-    public void setLocation(String location) {
+    void setLocation(String location) {
         mLocation = location;
     }
 
-    public Date getDate() {
+    Date getDate() {
         return mDate;
     }
 
-    public void setDate(Date date) {
+    void setDate(Date date) {
         mDate = date;
     }
 
-    public String getCard() {
+    String getCard() {
         return mCard;
     }
 
-    public void setCard(String card) {
+    void setCard(String card) {
         mCard = card;
     }
 
-    public BigDecimal getAmount() {
+    BigDecimal getAmount() {
         return mAmount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    void setAmount(BigDecimal amount) {
         mAmount = amount;
     }
 
-    public boolean isOut() {
+    boolean getWasPaidOut() {
         return mWasPaidOut;
     }
 
-    public void setOut(boolean out) {
+    void setWasPaidOut(boolean out) {
         mWasPaidOut = out;
     }
 
