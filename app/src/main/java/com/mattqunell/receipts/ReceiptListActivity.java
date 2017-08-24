@@ -10,6 +10,7 @@ public class ReceiptListActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new ReceiptListFragment();
+        //return new ReceiptListFragment();
+        return null;
     }
 }
