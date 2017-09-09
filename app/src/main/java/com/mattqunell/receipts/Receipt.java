@@ -2,16 +2,23 @@ package com.mattqunell.receipts;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.UUID;
 
-class Receipt implements Comparable<Receipt> {
+public class Receipt implements Comparable<Receipt> {
 
+    private UUID mId;
     private String mLocation;
     private Date mDate;
     private String mCard;
     private BigDecimal mAmount;
-    private boolean mWasPaidOut;
+    private boolean mPaid;
 
-    Receipt() {
+    public Receipt() {
+        this(UUID.randomUUID());
+    }
+
+    public Receipt(UUID id) {
+        mId = id;
         mDate = new Date();
     }
 
@@ -19,7 +26,7 @@ class Receipt implements Comparable<Receipt> {
         return mLocation;
     }
 
-    void setLocation(String location) {
+    public void setLocation(String location) {
         mLocation = location;
     }
 
@@ -27,7 +34,7 @@ class Receipt implements Comparable<Receipt> {
         return mDate;
     }
 
-    void setDate(Date date) {
+    public void setDate(Date date) {
         mDate = date;
     }
 
@@ -35,7 +42,7 @@ class Receipt implements Comparable<Receipt> {
         return mCard;
     }
 
-    void setCard(String card) {
+    public void setCard(String card) {
         mCard = card;
     }
 
@@ -43,16 +50,16 @@ class Receipt implements Comparable<Receipt> {
         return mAmount;
     }
 
-    void setAmount(BigDecimal amount) {
+    public void setAmount(BigDecimal amount) {
         mAmount = amount;
     }
 
-    boolean getWasPaidOut() {
-        return mWasPaidOut;
+    boolean getPaid() {
+        return mPaid;
     }
 
-    void setWasPaidOut(boolean out) {
-        mWasPaidOut = out;
+    public void setPaid(boolean paid) {
+        mPaid = paid;
     }
 
     @Override
