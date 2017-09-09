@@ -17,7 +17,7 @@ public class ReceiptFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_receipt, container, false);
 
-        mReceipt = ReceiptBook.get().getReceipts().get(0);
+        //mReceipt = ReceiptBook.get().getReceipts().get(0);
 
         // UI elements
 

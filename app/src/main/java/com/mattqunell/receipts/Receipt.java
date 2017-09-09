@@ -22,6 +22,14 @@ public class Receipt implements Comparable<Receipt> {
         mDate = new Date();
     }
 
+    UUID getId() {
+        return mId;
+    }
+
+    public void setId(UUID id) {
+        mId = id;
+    }
+
     String getLocation() {
         return mLocation;
     }
@@ -54,7 +62,7 @@ public class Receipt implements Comparable<Receipt> {
         mAmount = amount;
     }
 
-    boolean getPaid() {
+    boolean wasPaid() {
         return mPaid;
     }
 

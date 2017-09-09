@@ -20,7 +20,7 @@ public class ReceiptPagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipt_pager);
 
         mViewPager = (ViewPager) findViewById(R.id.receipt_view_pager);
-        mReceipts = ReceiptBook.get().getReceipts();
+        mReceipts = ReceiptBook.get(this).getReceipts();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {

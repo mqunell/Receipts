@@ -1,29 +1,45 @@
 package com.mattqunell.receipts;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.mattqunell.receipts.database.ReceiptBaseHelper;
+import com.mattqunell.receipts.database.ReceiptCursorWrapper;
+import com.mattqunell.receipts.database.ReceiptDbSchema.ReceiptTable;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * ReceiptBook is implemented as a singleton, which is a class that allows only one instance of
+ * itself to be created. It exists as long as the application is in memory, and is available through
+ * lifecycle changes in activities and fragments. Singletons allow data to be easily passed between
+ * controller classes, but should not be used for everything or as long-term storage solutions.
+ */
 class ReceiptBook {
 
     // The one ReceiptBook to use throughout the app
     private static ReceiptBook sReceiptBook;
 
-    // The List of Receipts
-    private List<Receipt> mReceipts;
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
 
-    // Public getter method for the ReceiptBook
-    static ReceiptBook get() {
+    // Static getter that creates sReceiptBook if it doesn't exist and returns it
+    static ReceiptBook get(Context context) {
         if (sReceiptBook == null) {
-            sReceiptBook = new ReceiptBook();
+            sReceiptBook = new ReceiptBook(context);
         }
 
         return sReceiptBook;
     }
 
     // Private constructor to limit instantiation
-    private ReceiptBook() {
-        mReceipts = new ArrayList<>();
+    private ReceiptBook(Context context) {
+        mContext = context;
+        mDatabase = new ReceiptBaseHelper(mContext).getWritableDatabase();
 
         // Dummy Receipts for testing
         for (int i = 0; i < 25; i++) {
@@ -33,21 +49,64 @@ class ReceiptBook {
             // Date is set automatically
             temp.setCard("Chase");
             temp.setAmount(new BigDecimal("49.99"));
-            temp.setWasPaidOut(true);
+            temp.setPaid(true);
 
-            mReceipts.add(temp);
+            ContentValues values = getContentValues(temp);
+            mDatabase.insert(ReceiptTable.NAME, null, values);
         }
     }
 
-    void addReceipt(Receipt r) {
-        mReceipts.add(r);
+    // Gets an ArrayList of all Receipts in the database
+    public List<Receipt> getReceipts() {
+        List<Receipt> receipts = new ArrayList<>();
+
+        ReceiptCursorWrapper cursor = queryReceipts(null, null);
+
+        try {
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()) {
+                receipts.add(cursor.getReceipt());
+                cursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+
+        return receipts;
     }
 
-    void removeReceipt(Receipt r) {
-        mReceipts.remove(r);
+    // Helper method that essentially converts a Receipt into a ContentValues
+    private static ContentValues getContentValues(Receipt receipt) {
+
+        // ContentValues is a key-value class specifically designed for SQLite data
+        ContentValues values = new ContentValues();
+
+        values.put(ReceiptTable.Cols.UUID, receipt.getId().toString());
+        values.put(ReceiptTable.Cols.LOCATION, receipt.getLocation());
+        values.put(ReceiptTable.Cols.DATE, receipt.getDate().getTime());
+        values.put(ReceiptTable.Cols.CARD, receipt.getCard());
+        values.put(ReceiptTable.Cols.AMOUNT, receipt.getAmount().toString());
+        values.put(ReceiptTable.Cols.PAID, receipt.wasPaid() ? 1 : 0);
+
+        return values;
     }
 
-    List<Receipt> getReceipts() {
-        return mReceipts;
+    // Helper method that searches for a Receipt (?)
+    private ReceiptCursorWrapper queryReceipts(String whereClause, String[] whereArgs) {
+
+        // Args: table, columns, where, whereArgs, groupBy, having, orderBy
+        Cursor cursor = mDatabase.query(
+                ReceiptTable.NAME,
+                null, // null selects all
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+
+        return new ReceiptCursorWrapper(cursor);
     }
 }
