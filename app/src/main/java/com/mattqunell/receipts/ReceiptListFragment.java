@@ -1,9 +1,11 @@
 package com.mattqunell.receipts;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,8 +78,9 @@ public class ReceiptListFragment extends Fragment {
             mReceipt = receipt;
 
             mLocation.setText(mReceipt.getLocation());
-            mDate.setText(mReceipt.getDate().toString());
+            mDate.setText(DateFormat.format("M/dd", mReceipt.getDate()));
             mAmount.setText(mReceipt.getAmount().toString());
+            mAmount.setTextColor(mReceipt.wasPaid() ? Color.RED : Color.GREEN);
             mCard.setText(mReceipt.getCard());
         }
 
