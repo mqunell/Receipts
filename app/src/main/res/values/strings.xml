@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Receipts</string>
 
+    <string name="new_receipt">New Receipt</string>
+
     <!-- fragment_receipt -->
     <string name="location">Location</string>
     <string name="amount">Amount</string>
