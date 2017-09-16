@@ -12,6 +12,7 @@ import com.mattqunell.receipts.database.ReceiptDbSchema.ReceiptTable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /*
  * ReceiptBook is implemented as a singleton, which is a class that allows only one instance of
@@ -54,6 +55,20 @@ class ReceiptBook {
             ContentValues values = getContentValues(temp);
             mDatabase.insert(ReceiptTable.NAME, null, values);
         }
+    }
+
+    // Gets a Receipt from a UUID
+    public Receipt getReceipt(UUID receiptId) {
+        List<Receipt> receipts = getReceipts();
+
+        for (Receipt r : receipts) {
+            if (r.getId().equals(receiptId)) {
+                return r;
+            }
+        }
+
+        // Should not reach this point
+        return null;
     }
 
     // Gets an ArrayList of all Receipts in the database
