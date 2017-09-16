@@ -9,7 +9,7 @@ public class Receipt implements Comparable<Receipt> {
     private UUID mId;
     private String mLocation;
     private Date mDate;
-    private String mCard;
+    private int mCard;
     private BigDecimal mAmount;
     private boolean mPaid;
 
@@ -46,11 +46,11 @@ public class Receipt implements Comparable<Receipt> {
         mDate = date;
     }
 
-    String getCard() {
+    int getCard() {
         return mCard;
     }
 
-    public void setCard(String card) {
+    public void setCard(int card) {
         mCard = card;
     }
 

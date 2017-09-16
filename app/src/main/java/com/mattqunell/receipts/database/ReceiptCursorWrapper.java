@@ -26,7 +26,7 @@ public class ReceiptCursorWrapper extends CursorWrapper{
         String uuid     = getString(getColumnIndex(ReceiptTable.Cols.UUID));
         String location = getString(getColumnIndex(ReceiptTable.Cols.LOCATION));
         long date       = getLong(getColumnIndex(ReceiptTable.Cols.DATE));
-        String card     = getString(getColumnIndex(ReceiptTable.Cols.CARD));
+        int card        = getInt(getColumnIndex(ReceiptTable.Cols.CARD));
         String amount   = getString(getColumnIndex(ReceiptTable.Cols.AMOUNT));
         int isPaid      = getInt(getColumnIndex(ReceiptTable.Cols.PAID));
 

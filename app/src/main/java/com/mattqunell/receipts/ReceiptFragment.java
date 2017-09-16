@@ -107,12 +107,13 @@ public class ReceiptFragment extends Fragment {
 
         // Card RadioGroup
         mCardGroup = v.findViewById(R.id.receipt_card_group);
-        //todo: Select the existing choice
+        RadioButton selected = (RadioButton) mCardGroup.getChildAt(mReceipt.getCard());
+        selected.setChecked(true);
         mCardGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int selectedRadioId) {
-                RadioButton radioButton = v.findViewById(selectedRadioId);
-                mReceipt.setCard(radioButton.getText().toString());
+                RadioButton newSelected = v.findViewById(mCardGroup.getCheckedRadioButtonId());
+                mReceipt.setCard(mCardGroup.indexOfChild(newSelected));
             }
         });
 

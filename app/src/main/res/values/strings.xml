@@ -6,9 +6,9 @@
     <!-- fragment_receipt -->
     <string name="location">Location</string>
     <string name="amount">Amount</string>
-    <string name="card_one">Card 1</string>
-    <string name="card_two">Card 2</string>
-    <string name="card_three">Card 3</string>
+    <string name="card_one">Card 0</string>
+    <string name="card_two">Card 1</string>
+    <string name="card_three">Card 2</string>
     <string name="paid_out">Paid Out</string>
 
 </resources>

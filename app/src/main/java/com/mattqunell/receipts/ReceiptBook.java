@@ -48,7 +48,7 @@ class ReceiptBook {
 
             temp.setLocation("Fry's");
             // Date is set automatically
-            temp.setCard("Chase");
+            temp.setCard(0);
             temp.setAmount(new BigDecimal("49.99"));
             temp.setPaid(true);
 
