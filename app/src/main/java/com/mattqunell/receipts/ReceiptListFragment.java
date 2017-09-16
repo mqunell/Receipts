@@ -62,7 +62,7 @@ public class ReceiptListFragment extends Fragment {
     private void newReceipt() {
         // todo: Make a new Receipt, add it to the ReceiptBook
 
-        // todo: Start ReceiptPagerActivity (and ReceiptFragment) at the new Receipt
+        // todo: Start the new Receipt in a ReceiptActivity/ReceiptFragment
     }
 
     // Helper method that creates and sets/updates the Adapter
@@ -120,7 +120,9 @@ public class ReceiptListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            // todo: Start ReceiptPagerActivity
+
+            // Start the ReceiptActivity/ReceiptFragment
+            startActivity(ReceiptActivity.newIntent(getActivity(), mReceipt.getId()));
         }
     }
 
