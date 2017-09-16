@@ -91,7 +91,12 @@ public class ReceiptFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int after) {
-                mReceipt.setAmount(new BigDecimal(s.toString()));
+
+                // Prevent crashing when mAmount is blank
+                mReceipt.setAmount(s.toString().length() > 0
+                        ? new BigDecimal(s.toString())
+                        : new BigDecimal("0.00")
+                );
             }
 
             @Override
@@ -132,5 +137,11 @@ public class ReceiptFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        ReceiptBook.get(getActivity()).updateReceipt(mReceipt);
     }
 }

@@ -41,6 +41,12 @@ public class ReceiptListFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        updateUi();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_receipt_list, menu);

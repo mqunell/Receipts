@@ -57,6 +57,17 @@ class ReceiptBook {
         }
     }
 
+    // Edits an existing Receipt in the database
+    public void updateReceipt(Receipt receipt) {
+        String uuidString = receipt.getId().toString();
+        ContentValues values = getContentValues(receipt);
+
+        mDatabase.update(ReceiptTable.NAME,
+                values,
+                ReceiptTable.Cols.UUID + " = ?",
+                new String[] { uuidString });
+    }
+
     // Gets a Receipt from a UUID
     public Receipt getReceipt(UUID receiptId) {
         List<Receipt> receipts = getReceipts();
