@@ -6,9 +6,16 @@
     <!-- fragment_receipt -->
     <string name="location">Location</string>
     <string name="amount">Amount</string>
-    <string name="card_one">Card 0</string>
-    <string name="card_two">Card 1</string>
-    <string name="card_three">Card 2</string>
+    <string name="card_one">BECU</string>
+    <string name="card_two">Key</string>
+    <string name="card_three">Chase</string>
     <string name="paid_out">Paid Out</string>
+
+
+    <string-array name="cards">
+        <item>@string/card_one</item>
+        <item>@string/card_two</item>
+        <item>@string/card_three</item>
+    </string-array>
 
 </resources>
