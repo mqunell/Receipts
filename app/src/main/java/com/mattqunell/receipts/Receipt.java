@@ -19,7 +19,11 @@ public class Receipt implements Comparable<Receipt> {
 
     public Receipt(UUID id) {
         mId = id;
+        mLocation = "";
         mDate = new Date();
+        mCard = 0;
+        mAmount = new BigDecimal("0.00");
+        mPaid = true;
     }
 
     UUID getId() {

@@ -56,19 +56,17 @@ public class ReceiptListFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_receipt:
-                newReceipt();
+
+                // Create a new Receipt, add it to ReceiptBook, and start it
+                Receipt receipt = new Receipt();
+                ReceiptBook.get(getContext()).addReceipt(receipt);
+                startReceiptActivity(receipt);
+
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    // Creates a new Receipt
-    private void newReceipt() {
-        // todo: Make a new Receipt, add it to the ReceiptBook
-
-        // todo: Start the new Receipt in a ReceiptActivity/ReceiptFragment
     }
 
     // Helper method that creates and sets/updates the Adapter
@@ -86,6 +84,11 @@ public class ReceiptListFragment extends Fragment {
             mAdapter.setReceipts(receipts);
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    // Helper method to start a ReceiptActivity/ReceiptFragment at a specific Receipt
+    private void startReceiptActivity(Receipt receipt) {
+        startActivity(ReceiptActivity.newIntent(getActivity(), receipt.getId()));
     }
 
 
@@ -127,9 +130,7 @@ public class ReceiptListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-
-            // Start the ReceiptActivity/ReceiptFragment
-            startActivity(ReceiptActivity.newIntent(getActivity(), mReceipt.getId()));
+            startReceiptActivity(mReceipt);
         }
     }
 

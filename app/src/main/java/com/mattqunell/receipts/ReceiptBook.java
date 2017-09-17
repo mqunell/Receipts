@@ -41,20 +41,11 @@ class ReceiptBook {
     private ReceiptBook(Context context) {
         mContext = context;
         mDatabase = new ReceiptBaseHelper(mContext).getWritableDatabase();
+    }
 
-        // Dummy Receipts for testing
-        for (int i = 0; i < 25; i++) {
-            Receipt temp = new Receipt();
-
-            temp.setLocation("Fry's");
-            // Date is set automatically
-            temp.setCard(0);
-            temp.setAmount(new BigDecimal("49.99"));
-            temp.setPaid(true);
-
-            ContentValues values = getContentValues(temp);
-            mDatabase.insert(ReceiptTable.NAME, null, values);
-        }
+    public void addReceipt(Receipt receipt) {
+        ContentValues values = getContentValues(receipt);
+        mDatabase.insert(ReceiptTable.NAME, null, values);
     }
 
     // Edits an existing Receipt in the database
