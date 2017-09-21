@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 public class ReceiptFragment extends Fragment {
@@ -130,8 +131,9 @@ public class ReceiptFragment extends Fragment {
         mDate.setDate(mReceipt.getDate().getTime());
         mDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
-                mReceipt.setDate(new Date(calendarView.getDate()));
+            public void onSelectedDayChange(CalendarView calendar, int year, int month, int day) {
+                Date selected = new GregorianCalendar(year, month, day).getTime();
+                mReceipt.setDate(selected);
             }
         });
 
