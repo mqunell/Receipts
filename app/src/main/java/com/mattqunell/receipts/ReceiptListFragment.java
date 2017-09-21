@@ -1,8 +1,10 @@
 package com.mattqunell.receipts;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
@@ -67,11 +69,32 @@ public class ReceiptListFragment extends Fragment {
 
             case R.id.remove_all_receipts:
 
-                // Clear the database, make a Toast, and update the UI
-                ReceiptBook.get(getActivity()).removeAllReceipts();
-                Toast.makeText(getActivity(), R.string.removed_all_receipts,
-                        Toast.LENGTH_SHORT).show();
-                updateUi();
+                // If there are Receipts to remove
+                if (ReceiptBook.get(getActivity()).getReceipts().size() > 0) {
+
+                    // AlertDialog for removal confirmation
+                    new AlertDialog.Builder(getActivity())
+                            .setIcon(R.drawable.ic_alert_warning)
+                            .setTitle(R.string.remove_all_receipts)
+                            .setMessage(R.string.remove_all_confirmation)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    // Clear the database, make a Toast, and update the UI
+                                    ReceiptBook.get(getActivity()).removeAllReceipts();
+                                    Toast.makeText(getActivity(), R.string.removed_all_receipts,
+                                            Toast.LENGTH_SHORT).show();
+                                    updateUi();
+
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+                }
+                else {
+                    Toast.makeText(getActivity(), R.string.no_receipts, Toast.LENGTH_SHORT).show();
+                }
 
                 return true;
 

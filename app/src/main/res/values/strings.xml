@@ -4,7 +4,9 @@
     <!-- fragment_receipt_list / menu -->
     <string name="new_receipt">New Receipt</string>
     <string name="remove_all_receipts">Remove All Receipts</string>
-    <string name="removed_all_receipts">Removed All Receipts</string>
+    <string name="remove_all_confirmation">Are you sure you\'d like to remove all receipts?</string>
+    <string name="removed_all_receipts">Removed all receipts</string>
+    <string name="no_receipts">There are no receipts to remove</string>
 
     <!-- fragment_receipt / menu -->
     <string name="location">Location</string>
