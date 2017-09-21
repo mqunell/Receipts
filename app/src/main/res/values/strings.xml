@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Receipts</string>
 
+    <!-- fragment_receipt_list / menu -->
     <string name="new_receipt">New Receipt</string>
+    <string name="remove_all_receipts">Remove All Receipts</string>
+    <string name="removed_all_receipts">Removed All Receipts</string>
 
-    <!-- fragment_receipt -->
+    <!-- fragment_receipt / menu -->
     <string name="location">Location</string>
     <string name="amount">Amount</string>
     <string name="card_one">BECU</string>

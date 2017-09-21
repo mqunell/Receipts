@@ -8,4 +8,8 @@
         android:title="@string/new_receipt"
         app:showAsAction="ifRoom|withText" />
 
+    <item android:id="@+id/remove_all_receipts"
+          android:title="@string/remove_all_receipts"
+          app:showAsAction="never" />
+
 </menu>

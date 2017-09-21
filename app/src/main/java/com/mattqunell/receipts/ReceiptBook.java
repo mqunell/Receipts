@@ -9,7 +9,6 @@ import com.mattqunell.receipts.database.ReceiptBaseHelper;
 import com.mattqunell.receipts.database.ReceiptCursorWrapper;
 import com.mattqunell.receipts.database.ReceiptDbSchema.ReceiptTable;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -102,6 +101,11 @@ class ReceiptBook {
         mDatabase.delete(ReceiptTable.NAME,
                 ReceiptTable.Cols.UUID + " = ?",
                 new String[] { uuidString });
+    }
+
+    // Deletes all Receipts in the database
+    public void removeAllReceipts() {
+        mDatabase.delete(ReceiptTable.NAME, null, null);
     }
 
     // Helper method that essentially converts a Receipt into a ContentValues

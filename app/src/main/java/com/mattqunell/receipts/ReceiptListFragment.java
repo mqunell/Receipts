@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -59,8 +60,18 @@ public class ReceiptListFragment extends Fragment {
 
                 // Create a new Receipt, add it to ReceiptBook, and start it
                 Receipt receipt = new Receipt();
-                ReceiptBook.get(getContext()).addReceipt(receipt);
+                ReceiptBook.get(getActivity()).addReceipt(receipt);
                 startReceiptActivity(receipt);
+
+                return true;
+
+            case R.id.remove_all_receipts:
+
+                // Clear the database, make a Toast, and update the UI
+                ReceiptBook.get(getActivity()).removeAllReceipts();
+                Toast.makeText(getActivity(), R.string.removed_all_receipts,
+                        Toast.LENGTH_SHORT).show();
+                updateUi();
 
                 return true;
 
