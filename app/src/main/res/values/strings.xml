@@ -11,11 +11,12 @@
     <string name="card_three">Chase</string>
     <string name="paid_out">Paid Out</string>
 
-
     <string-array name="cards">
         <item>@string/card_one</item>
         <item>@string/card_two</item>
         <item>@string/card_three</item>
     </string-array>
+
+    <string name="remove_receipt">Remove Receipt</string>
 
 </resources>

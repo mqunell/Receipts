@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
@@ -45,6 +48,7 @@ public class ReceiptFragment extends Fragment {
     @Override
     public void onCreate(Bundle inState) {
         super.onCreate(inState);
+        setHasOptionsMenu(true);
 
         UUID receiptId = (UUID) getArguments().getSerializable(ARG_RECEIPT_ID);
         mReceipt = ReceiptBook.get(getActivity()).getReceipt(receiptId);
@@ -138,5 +142,25 @@ public class ReceiptFragment extends Fragment {
     public void onPause() {
         super.onPause();
         ReceiptBook.get(getActivity()).updateReceipt(mReceipt);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_receipt, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.remove_receipt:
+                ReceiptBook.get(getActivity()).removeReceipt(mReceipt);
+                getActivity().finish();
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -43,6 +43,7 @@ class ReceiptBook {
         mDatabase = new ReceiptBaseHelper(mContext).getWritableDatabase();
     }
 
+    // Adds a new Receipt to the database
     public void addReceipt(Receipt receipt) {
         ContentValues values = getContentValues(receipt);
         mDatabase.insert(ReceiptTable.NAME, null, values);
@@ -92,6 +93,15 @@ class ReceiptBook {
         }
 
         return receipts;
+    }
+
+    // Removes a Receipt from the database
+    public void removeReceipt(Receipt receipt) {
+        String uuidString = receipt.getId().toString();
+
+        mDatabase.delete(ReceiptTable.NAME,
+                ReceiptTable.Cols.UUID + " = ?",
+                new String[] { uuidString });
     }
 
     // Helper method that essentially converts a Receipt into a ContentValues
