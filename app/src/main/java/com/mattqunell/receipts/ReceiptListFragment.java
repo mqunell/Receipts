@@ -122,7 +122,7 @@ public class ReceiptListFragment extends Fragment {
 
             mLocation.setText(mReceipt.getLocation());
             mDate.setText(DateFormat.format("M/dd", mReceipt.getDate()));
-            mAmount.setText(mReceipt.getAmount().toString());
+            mAmount.setText(mReceipt.getAmount());
             mAmount.setTextColor(mReceipt.wasPaid() ? Color.RED : Color.GREEN);
             String[] cards = getResources().getStringArray(R.array.cards);
             mCard.setText(cards[mReceipt.getCard()]);

@@ -10,7 +10,7 @@ public class Receipt implements Comparable<Receipt> {
     private String mLocation;
     private Date mDate;
     private int mCard;
-    private BigDecimal mAmount;
+    private String mAmount;
     private boolean mPaid;
 
     public Receipt() {
@@ -22,7 +22,7 @@ public class Receipt implements Comparable<Receipt> {
         mLocation = "";
         mDate = new Date();
         mCard = 0;
-        mAmount = new BigDecimal("0.00");
+        mAmount = "";
         mPaid = true;
     }
 
@@ -58,11 +58,11 @@ public class Receipt implements Comparable<Receipt> {
         mCard = card;
     }
 
-    BigDecimal getAmount() {
+    String getAmount() {
         return mAmount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(String amount) {
         mAmount = amount;
     }
 

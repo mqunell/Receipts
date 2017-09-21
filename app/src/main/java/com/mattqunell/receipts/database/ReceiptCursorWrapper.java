@@ -34,7 +34,7 @@ public class ReceiptCursorWrapper extends CursorWrapper{
         receipt.setLocation(location);
         receipt.setDate(new Date(date));
         receipt.setCard(card);
-        receipt.setAmount(new BigDecimal(amount));
+        receipt.setAmount(amount);
         receipt.setPaid(isPaid != 0);
 
         return receipt;

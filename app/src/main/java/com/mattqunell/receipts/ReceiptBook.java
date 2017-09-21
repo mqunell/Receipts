@@ -104,7 +104,7 @@ class ReceiptBook {
         values.put(ReceiptTable.Cols.LOCATION, receipt.getLocation());
         values.put(ReceiptTable.Cols.DATE, receipt.getDate().getTime());
         values.put(ReceiptTable.Cols.CARD, receipt.getCard());
-        values.put(ReceiptTable.Cols.AMOUNT, receipt.getAmount().toString());
+        values.put(ReceiptTable.Cols.AMOUNT, receipt.getAmount());
         values.put(ReceiptTable.Cols.PAID, receipt.wasPaid() ? 1 : 0);
 
         return values;

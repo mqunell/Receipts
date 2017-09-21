@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
@@ -82,7 +81,7 @@ public class ReceiptFragment extends Fragment {
 
         // Amount EditText
         mAmount = v.findViewById(R.id.receipt_amount);
-        mAmount.setText(mReceipt.getAmount().toString());
+        mAmount.setText(mReceipt.getAmount());
         mAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,12 +90,7 @@ public class ReceiptFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int after) {
-
-                // Prevent crashing when mAmount is blank
-                mReceipt.setAmount(s.toString().length() > 0
-                        ? new BigDecimal(s.toString())
-                        : new BigDecimal("0.00")
-                );
+                mReceipt.setAmount(s.toString());
             }
 
             @Override
