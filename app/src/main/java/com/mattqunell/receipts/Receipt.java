@@ -1,6 +1,8 @@
 package com.mattqunell.receipts;
 
-import java.math.BigDecimal;
+import android.content.Context;
+import android.text.format.DateFormat;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -72,6 +74,22 @@ public class Receipt implements Comparable<Receipt> {
 
     public void setPaid(boolean paid) {
         mPaid = paid;
+    }
+
+    public String toString(Context context) {
+        String date = DateFormat.format("M/d", mDate).toString();
+        String card = context.getResources().getStringArray(R.array.cards)[mCard];
+
+        String output = date + "  "
+                + mLocation + "  "
+                + card + "  "
+                + mAmount;
+
+        if (!mPaid) {
+            output += "**";
+        }
+
+        return output;
     }
 
     @Override

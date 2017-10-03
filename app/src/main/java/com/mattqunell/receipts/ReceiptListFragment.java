@@ -1,9 +1,11 @@
 package com.mattqunell.receipts;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ReceiptListFragment extends Fragment {
@@ -58,6 +61,8 @@ public class ReceiptListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            // New Receipt
             case R.id.new_receipt:
 
                 // Create a new Receipt, add it to ReceiptBook, and start it
@@ -67,6 +72,31 @@ public class ReceiptListFragment extends Fragment {
 
                 return true;
 
+            // Export Receipts
+            case R.id.export_receipts:
+
+                // Set up the necessary Strings
+                String type = "text/plain";
+                String subject = getString(R.string.app_name);
+                String text = getReceiptReport();
+                String chooserText = getString(R.string.send_report_via);
+
+                // Build the Intent
+                Intent i = ShareCompat.IntentBuilder.from(getActivity())
+                        .setType(type)
+                        .setSubject(subject)
+                        .setText(text)
+                        .getIntent();
+
+                // Force the chooser to be shown each time with export_send
+                i = Intent.createChooser(i, chooserText);
+
+                // Start the Intent
+                startActivity(i);
+
+                return true;
+
+            // Remove All Receipts
             case R.id.remove_all_receipts:
 
                 // If there are Receipts to remove
@@ -123,6 +153,23 @@ public class ReceiptListFragment extends Fragment {
     // Helper method to start a ReceiptActivity/ReceiptFragment at a specific Receipt
     private void startReceiptActivity(Receipt receipt) {
         startActivity(ReceiptActivity.newIntent(getActivity(), receipt.getId()));
+    }
+
+    // Builds a Receipt report for exporting
+    private String getReceiptReport() {
+
+        // Get and sort the Receipts
+        List<Receipt> receipts = ReceiptBook.get(getActivity()).getReceipts();
+        Collections.sort(receipts);
+
+        // Build the output String
+        StringBuilder output = new StringBuilder();
+        for (Receipt r : receipts) {
+            output.append(r.toString(getActivity()));
+            output.append("\n");
+        }
+
+        return output.toString();
     }
 
 
