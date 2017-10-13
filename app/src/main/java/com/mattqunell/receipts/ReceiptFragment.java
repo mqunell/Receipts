@@ -1,5 +1,6 @@
 package com.mattqunell.receipts;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -114,6 +116,8 @@ public class ReceiptFragment extends Fragment {
             public void onCheckedChanged(RadioGroup group, int selectedRadioId) {
                 RadioButton newSelected = v.findViewById(mCardGroup.getCheckedRadioButtonId());
                 mReceipt.setCard(mCardGroup.indexOfChild(newSelected));
+
+                hideKeyboard();
             }
         });
 
@@ -124,6 +128,8 @@ public class ReceiptFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mReceipt.setPaid(isChecked);
+
+                hideKeyboard();
             }
         });
 
@@ -135,6 +141,8 @@ public class ReceiptFragment extends Fragment {
             public void onSelectedDayChange(CalendarView calendar, int year, int month, int day) {
                 Date selected = new GregorianCalendar(year, month, day).getTime();
                 mReceipt.setDate(selected);
+
+                hideKeyboard();
             }
         });
 
@@ -165,6 +173,13 @@ public class ReceiptFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    // Helper method that hides the keyboard
+    private void hideKeyboard() {
+        InputMethodManager manager = (InputMethodManager) getActivity().
+                getSystemService(Activity.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
     }
 
     // Called from ReceiptActivity when Back is pressed
