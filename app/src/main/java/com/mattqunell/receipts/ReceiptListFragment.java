@@ -53,6 +53,20 @@ public class ReceiptListFragment extends Fragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+
+        /*
+         * Disable the MenuItems if there are no Receipts
+         * Note: The MenuItems don't need to be explicitly enabled when there are >= 1 Receipts,
+         * because they are enabled by default when the Menu is refreshed.
+         */
+        if (mAdapter.getItemCount() == 0) {
+            menu.findItem(R.id.export_receipts).setEnabled(false);
+            menu.findItem(R.id.remove_all_receipts).setEnabled(false);
+        }
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_receipt_list, menu);
@@ -72,7 +86,7 @@ public class ReceiptListFragment extends Fragment {
 
                 return true;
 
-            // Export Receipts
+            // Send Receipt Report
             case R.id.export_receipts:
 
                 // Set up the necessary Strings
@@ -99,32 +113,25 @@ public class ReceiptListFragment extends Fragment {
             // Remove All Receipts
             case R.id.remove_all_receipts:
 
-                // If there are Receipts to remove
-                if (ReceiptBook.get(getActivity()).getReceipts().size() > 0) {
+                // AlertDialog for removal confirmation
+                new AlertDialog.Builder(getActivity())
+                        .setIcon(R.drawable.ic_alert_warning)
+                        .setTitle(R.string.remove_all_receipts)
+                        .setMessage(R.string.remove_all_confirmation)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    // AlertDialog for removal confirmation
-                    new AlertDialog.Builder(getActivity())
-                            .setIcon(R.drawable.ic_alert_warning)
-                            .setTitle(R.string.remove_all_receipts)
-                            .setMessage(R.string.remove_all_confirmation)
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                // Clear the database, make a Toast, and update the UI
+                                ReceiptBook.get(getActivity()).removeAllReceipts();
+                                Toast.makeText(getActivity(), R.string.removed_all_receipts,
+                                        Toast.LENGTH_SHORT).show();
+                                updateUi();
 
-                                    // Clear the database, make a Toast, and update the UI
-                                    ReceiptBook.get(getActivity()).removeAllReceipts();
-                                    Toast.makeText(getActivity(), R.string.removed_all_receipts,
-                                            Toast.LENGTH_SHORT).show();
-                                    updateUi();
-
-                                }
-                            })
-                            .setNegativeButton("No", null)
-                            .show();
-                }
-                else {
-                    Toast.makeText(getActivity(), R.string.no_receipts, Toast.LENGTH_SHORT).show();
-                }
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
 
                 return true;
 
@@ -148,6 +155,9 @@ public class ReceiptListFragment extends Fragment {
             mAdapter.setReceipts(receipts);
             mAdapter.notifyDataSetChanged();
         }
+
+        // Refresh the Menu
+        getActivity().invalidateOptionsMenu();
     }
 
     // Helper method to start a ReceiptActivity/ReceiptFragment at a specific Receipt
