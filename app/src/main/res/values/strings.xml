@@ -17,6 +17,7 @@
     <string name="card_two">Key</string>
     <string name="card_three">Chase</string>
     <string name="paid_out">Paid Out</string>
+    <string name="incomplete_receipt">Missing information!</string>
 
     <string-array name="cards">
         <item>@string/card_one</item>

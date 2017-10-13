@@ -8,6 +8,8 @@ import java.util.UUID;
 
 public class ReceiptActivity extends SingleFragmentActivity {
 
+    ReceiptFragment mReceiptFragment;
+
     // Tag for Intent extra
     private static final String EXTRA_RECEIPT_ID = "com.mattqunell.receipts";
 
@@ -21,6 +23,18 @@ public class ReceiptActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
         UUID receiptId = (UUID) getIntent().getSerializableExtra(EXTRA_RECEIPT_ID);
-        return ReceiptFragment.newInstance(receiptId);
+        mReceiptFragment = ReceiptFragment.newInstance(receiptId);
+        return mReceiptFragment;
+    }
+
+    // Gives onBackPressed functionality to ReceiptFragment
+    @Override
+    public void onBackPressed() {
+        if (mReceiptFragment != null) {
+            mReceiptFragment.onBackPressed();
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }

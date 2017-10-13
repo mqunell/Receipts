@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -163,6 +164,18 @@ public class ReceiptFragment extends Fragment {
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    // Called from ReceiptActivity when Back is pressed
+    protected void onBackPressed() {
+
+        // If mLocation or mAmount is empty, make a Toast
+        if (mLocation.getText().toString().equals("") || mAmount.getText().toString().equals("")) {
+            Toast.makeText(getActivity(), R.string.incomplete_receipt, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            getActivity().finish();
         }
     }
 }
