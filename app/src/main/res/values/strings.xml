@@ -13,16 +13,17 @@
     <!-- fragment_add_receipt / menu -->
     <string name="location">Location</string>
     <string name="amount">Amount</string>
-    <string name="card_one">BECU</string>
-    <string name="card_two">Key</string>
-    <string name="card_three">Chase</string>
     <string name="paid_out">Paid Out</string>
     <string name="incomplete_receipt">Missing information!</string>
 
     <string-array name="cards">
-        <item>@string/card_one</item>
-        <item>@string/card_two</item>
-        <item>@string/card_three</item>
+        <item>Checking</item>
+        <item>Savings</item>
+        <item>Key</item>
+        <item>Chase</item>
+        <item>GPay</item>
+        <item>PayPal</item>
+        <item>Other</item>
     </string-array>
 
     <string name="remove_receipt">Remove Receipt</string>

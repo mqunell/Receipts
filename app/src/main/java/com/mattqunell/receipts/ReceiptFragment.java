@@ -12,12 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mattqunell.receipts.data.Receipt;
@@ -37,7 +38,7 @@ public class ReceiptFragment extends Fragment {
     // UI elements
     private EditText mLocation;
     private EditText mAmount;
-    private RadioGroup mCardGroup;
+    private Spinner mCardSpinner;
     private CheckBox mPaidOut;
     private CalendarView mDate;
 
@@ -110,17 +111,27 @@ public class ReceiptFragment extends Fragment {
             }
         });
 
-        // Card RadioGroup
-        mCardGroup = v.findViewById(R.id.receipt_card_group);
-        RadioButton selected = (RadioButton) mCardGroup.getChildAt(mReceipt.getCard());
-        selected.setChecked(true);
-        mCardGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int selectedRadioId) {
-                RadioButton newSelected = v.findViewById(mCardGroup.getCheckedRadioButtonId());
-                mReceipt.setCard(mCardGroup.indexOfChild(newSelected));
+        // Card Spinner
+        mCardSpinner = v.findViewById(R.id.receipt_card);
 
+        // Create adapter using string array and default spinner layout
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.cards, android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        mCardSpinner.setAdapter(spinnerAdapter);
+
+        mCardSpinner.setSelection(mReceipt.getCard());
+        mCardSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mReceipt.setCard(position);
                 hideKeyboard();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Intentionally left blank
             }
         });
 
@@ -180,9 +191,11 @@ public class ReceiptFragment extends Fragment {
 
     // Helper method that hides the keyboard
     private void hideKeyboard() {
+        /* todo: stop this from crashing the app
         InputMethodManager manager = (InputMethodManager) getActivity().
                 getSystemService(Activity.INPUT_METHOD_SERVICE);
         manager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        */
     }
 
     // Called from ReceiptActivity when Back is pressed

@@ -8,75 +8,39 @@
 
     <EditText
         android:id="@+id/receipt_location"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:inputType="text"
         android:hint="@string/location"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:inputType="textCapSentences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        style="@style/add_receipt"
         tools:text="Location" />
 
     <EditText
         android:id="@+id/receipt_amount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
         android:hint="@string/amount"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/receipt_location"
+        style="@style/add_receipt"
         tools:text="12.34" />
 
-    <RadioGroup
-        android:id="@+id/receipt_card_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/receipt_amount">
-
-        <RadioButton
-            android:id="@+id/receipt_card_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/card_one"
-            tools:text="Card 1" />
-
-        <RadioButton
-            android:id="@+id/receipt_card_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/card_two"
-            tools:text="Card 2" />
-
-        <RadioButton
-            android:id="@+id/receipt_card_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/card_three"
-            tools:text="Card 3" />
-
-    </RadioGroup>
+    <Spinner
+        android:id="@+id/receipt_card"
+        app:layout_constraintEnd_toStartOf="@+id/receipt_paid_out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/receipt_amount"
+        style="@style/add_receipt" />
 
     <CheckBox
         android:id="@+id/receipt_paid_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/paid_out"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/receipt_amount" />
 
     <CalendarView
@@ -84,9 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/receipt_card_group"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/receipt_card" />
 
 </android.support.constraint.ConstraintLayout>
