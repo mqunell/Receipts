@@ -95,7 +95,7 @@ public class ReceiptListFragment extends Fragment {
                 // Set up the necessary Strings
                 String type = "text/plain";
                 String subject = getString(R.string.app_name);
-                String text = getReceiptReport();
+                String text = ReceiptDb.get(getContext()).getReceiptReport();
                 String chooserText = getString(R.string.send_report_via);
 
                 // Build the Intent
@@ -166,23 +166,6 @@ public class ReceiptListFragment extends Fragment {
     // Helper method to start a ReceiptActivity/ReceiptFragment at a specific Receipt
     private void startReceiptActivity(Receipt receipt) {
         startActivity(ReceiptActivity.newIntent(getActivity(), receipt.getId()));
-    }
-
-    // Builds a Receipt report for exporting
-    private String getReceiptReport() {
-
-        // Get and sort the Receipts
-        List<Receipt> receipts = ReceiptDb.get(getActivity()).getReceipts();
-        Collections.sort(receipts);
-
-        // Build the output String
-        StringBuilder output = new StringBuilder();
-        for (Receipt r : receipts) {
-            output.append(r.toString(getActivity()));
-            output.append("\n");
-        }
-
-        return output.toString();
     }
 
 

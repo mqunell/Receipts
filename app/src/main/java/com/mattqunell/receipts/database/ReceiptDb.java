@@ -4,11 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.format.DateFormat;
 
+import com.mattqunell.receipts.R;
 import com.mattqunell.receipts.data.Receipt;
 import com.mattqunell.receipts.database.ReceiptDbSchema.ReceiptTable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -91,6 +94,67 @@ public class ReceiptDb {
         }
 
         return receipts;
+    }
+
+    // Builds a formatted report of all Receipts in the database for exporting
+    public String getReceiptReport() {
+
+        // Get and sort the Receipts
+        List<Receipt> receipts = getReceipts();
+        Collections.sort(receipts);
+
+        // The array of cards
+        String[] cards = mContext.getResources().getStringArray(R.array.cards);
+
+        // Find the max location and card lengths
+        int maxLocationLen = 0;
+        int maxCardLen = 0;
+        for (Receipt r : receipts) {
+            int locLen = r.getLocation().length();
+            if (locLen > maxLocationLen) maxLocationLen = locLen;
+
+            int cardLen = cards[r.getCard()].length();
+            if (cardLen > maxCardLen) maxCardLen = cardLen;
+        }
+
+        // Build the output String
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < receipts.size(); i++) {
+            Receipt r = receipts.get(i);
+
+            // Date
+            output.append(DateFormat.format("MM/dd", r.getDate()).toString());
+            output.append("   ");
+
+            // Location and spacing
+            output.append(r.getLocation());
+            for (int j = r.getLocation().length(); j < maxLocationLen; j++) {
+                output.append(" ");
+            }
+            output.append("   ");
+
+            // Card and spacing
+            output.append(cards[r.getCard()]);
+            for (int j = cards[r.getCard()].length(); j < maxCardLen; j++) {
+                output.append(" ");
+            }
+            output.append("   ");
+
+            // Amount
+            output.append(r.getAmount());
+
+            // ** if not paid out
+            if (!r.wasPaid())
+                output.append("**");
+
+            // Extra newline if the next date is different
+            if (i + 1 < receipts.size() && !r.getDate().equals(receipts.get(i+1).getDate()))
+                output.append("\n");
+
+            output.append("\n");
+        }
+
+        return output.toString();
     }
 
     // Removes a Receipt from the database

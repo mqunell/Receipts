@@ -78,22 +78,6 @@ public class Receipt implements Comparable<Receipt> {
         mPaid = paid;
     }
 
-    public String toString(Context context) {
-        String date = DateFormat.format("M/d", mDate).toString();
-        String card = context.getResources().getStringArray(R.array.cards)[mCard];
-
-        String output = date + "  "
-                + mLocation + "  "
-                + card + "  "
-                + mAmount;
-
-        if (!mPaid) {
-            output += "**";
-        }
-
-        return output;
-    }
-
     @Override
     public int compareTo(Receipt other) {
         return mDate.compareTo(other.getDate());
