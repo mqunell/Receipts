@@ -20,6 +20,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.mattqunell.receipts.data.Receipt;
+import com.mattqunell.receipts.database.ReceiptDb;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.UUID;
@@ -55,7 +58,7 @@ public class ReceiptFragment extends Fragment {
         setHasOptionsMenu(true);
 
         UUID receiptId = (UUID) getArguments().getSerializable(ARG_RECEIPT_ID);
-        mReceipt = ReceiptBook.get(getActivity()).getReceipt(receiptId);
+        mReceipt = ReceiptDb.get(getActivity()).getReceipt(receiptId);
     }
 
     /*
@@ -65,7 +68,7 @@ public class ReceiptFragment extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle inState) {
-        final View v = inflater.inflate(R.layout.fragment_receipt, container, false);
+        final View v = inflater.inflate(R.layout.fragment_add_receipt, container, false);
 
         // Location EditText
         mLocation = v.findViewById(R.id.receipt_location);
@@ -152,7 +155,7 @@ public class ReceiptFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        ReceiptBook.get(getActivity()).updateReceipt(mReceipt);
+        ReceiptDb.get(getActivity()).updateReceipt(mReceipt);
     }
 
     @Override
@@ -165,7 +168,7 @@ public class ReceiptFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.remove_receipt:
-                ReceiptBook.get(getActivity()).removeReceipt(mReceipt);
+                ReceiptDb.get(getActivity()).removeReceipt(mReceipt);
                 getActivity().finish();
 
                 return true;

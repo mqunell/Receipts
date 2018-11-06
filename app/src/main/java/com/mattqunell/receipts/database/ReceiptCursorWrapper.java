@@ -3,10 +3,9 @@ package com.mattqunell.receipts.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.mattqunell.receipts.Receipt;
+import com.mattqunell.receipts.data.Receipt;
 import com.mattqunell.receipts.database.ReceiptDbSchema.ReceiptTable;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 

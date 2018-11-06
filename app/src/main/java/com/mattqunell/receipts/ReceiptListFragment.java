@@ -19,6 +19,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mattqunell.receipts.data.Receipt;
+import com.mattqunell.receipts.database.ReceiptDb;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -79,9 +82,9 @@ public class ReceiptListFragment extends Fragment {
             // New Receipt
             case R.id.new_receipt:
 
-                // Create a new Receipt, add it to ReceiptBook, and start it
+                // Create a new Receipt, add it to ReceiptDb, and start it
                 Receipt receipt = new Receipt();
-                ReceiptBook.get(getActivity()).addReceipt(receipt);
+                ReceiptDb.get(getActivity()).addReceipt(receipt);
                 startReceiptActivity(receipt);
 
                 return true;
@@ -123,7 +126,7 @@ public class ReceiptListFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 // Clear the database, make a Toast, and update the UI
-                                ReceiptBook.get(getActivity()).removeAllReceipts();
+                                ReceiptDb.get(getActivity()).removeAllReceipts();
                                 Toast.makeText(getActivity(), R.string.removed_all_receipts,
                                         Toast.LENGTH_SHORT).show();
                                 updateUi();
@@ -144,7 +147,7 @@ public class ReceiptListFragment extends Fragment {
     private void updateUi() {
 
         // Get the list of Receipts
-        List<Receipt> receipts = ReceiptBook.get(getActivity()).getReceipts();
+        List<Receipt> receipts = ReceiptDb.get(getActivity()).getReceipts();
 
         // Create the adapter, or refresh the existing one
         if (mAdapter == null) {
@@ -169,7 +172,7 @@ public class ReceiptListFragment extends Fragment {
     private String getReceiptReport() {
 
         // Get and sort the Receipts
-        List<Receipt> receipts = ReceiptBook.get(getActivity()).getReceipts();
+        List<Receipt> receipts = ReceiptDb.get(getActivity()).getReceipts();
         Collections.sort(receipts);
 
         // Build the output String
@@ -185,7 +188,7 @@ public class ReceiptListFragment extends Fragment {
 
     /*
      * ReceiptHolder: The ViewHolder
-     * Inflates and owns each individual layout (list_item_receipt) within the RecyclerView.
+     * Inflates and owns each individual layout (fragment_receipt_item) within the RecyclerView.
      * The bind(Receipt) method is called each time a new Receipt should be displayed.
      */
     private class ReceiptHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -198,7 +201,7 @@ public class ReceiptListFragment extends Fragment {
         private TextView mCard;
 
         public ReceiptHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.list_item_receipt, parent, false));
+            super(inflater.inflate(R.layout.fragment_receipt_item, parent, false));
             itemView.setOnClickListener(this);
 
             // UI elements
@@ -228,7 +231,7 @@ public class ReceiptListFragment extends Fragment {
 
     /*
      * ReceiptAdapter: The Adapter
-     * Connects the ViewHolder and Receipts by knowing how Receipts and ReceiptBook are implemented.
+     * Connects the ViewHolder and Receipts by knowing how Receipts and ReceiptDb are implemented.
      * The overridden methods are all required and called by the RecyclerView itself.
      */
     private class ReceiptAdapter extends RecyclerView.Adapter<ReceiptHolder> {

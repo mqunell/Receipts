@@ -1,7 +1,9 @@
-package com.mattqunell.receipts;
+package com.mattqunell.receipts.data;
 
 import android.content.Context;
 import android.text.format.DateFormat;
+
+import com.mattqunell.receipts.R;
 
 import java.util.Date;
 import java.util.UUID;
@@ -28,7 +30,7 @@ public class Receipt implements Comparable<Receipt> {
         mPaid = true;
     }
 
-    UUID getId() {
+    public UUID getId() {
         return mId;
     }
 
@@ -36,7 +38,7 @@ public class Receipt implements Comparable<Receipt> {
         mId = id;
     }
 
-    String getLocation() {
+    public String getLocation() {
         return mLocation;
     }
 
@@ -44,7 +46,7 @@ public class Receipt implements Comparable<Receipt> {
         mLocation = location;
     }
 
-    Date getDate() {
+    public Date getDate() {
         return mDate;
     }
 
@@ -52,7 +54,7 @@ public class Receipt implements Comparable<Receipt> {
         mDate = date;
     }
 
-    int getCard() {
+    public int getCard() {
         return mCard;
     }
 
@@ -60,7 +62,7 @@ public class Receipt implements Comparable<Receipt> {
         mCard = card;
     }
 
-    String getAmount() {
+    public String getAmount() {
         return mAmount;
     }
 
@@ -68,7 +70,7 @@ public class Receipt implements Comparable<Receipt> {
         mAmount = amount;
     }
 
-    boolean wasPaid() {
+    public boolean wasPaid() {
         return mPaid;
     }
 

@@ -1,12 +1,11 @@
-package com.mattqunell.receipts;
+package com.mattqunell.receipts.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mattqunell.receipts.database.ReceiptBaseHelper;
-import com.mattqunell.receipts.database.ReceiptCursorWrapper;
+import com.mattqunell.receipts.data.Receipt;
 import com.mattqunell.receipts.database.ReceiptDbSchema.ReceiptTable;
 
 import java.util.ArrayList;
@@ -14,30 +13,30 @@ import java.util.List;
 import java.util.UUID;
 
 /*
- * ReceiptBook is implemented as a singleton, which is a class that allows only one instance of
+ * ReceiptDb is implemented as a singleton, which is a class that allows only one instance of
  * itself to be created. It exists as long as the application is in memory, and is available through
  * lifecycle changes in activities and fragments. Singletons allow data to be easily passed between
  * controller classes, but should not be used for everything or as long-term storage solutions.
  */
-class ReceiptBook {
+public class ReceiptDb {
 
-    // The one ReceiptBook to use throughout the app
-    private static ReceiptBook sReceiptBook;
+    // The one ReceiptDb to use throughout the app
+    private static ReceiptDb sReceiptDb;
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
-    // Static getter that creates sReceiptBook if it doesn't exist and returns it
-    static ReceiptBook get(Context context) {
-        if (sReceiptBook == null) {
-            sReceiptBook = new ReceiptBook(context);
+    // Static getter that creates sReceiptDb if it doesn't exist and returns it
+    public static ReceiptDb get(Context context) {
+        if (sReceiptDb == null) {
+            sReceiptDb = new ReceiptDb(context);
         }
 
-        return sReceiptBook;
+        return sReceiptDb;
     }
 
     // Private constructor to limit instantiation
-    private ReceiptBook(Context context) {
+    private ReceiptDb(Context context) {
         mContext = context;
         mDatabase = new ReceiptBaseHelper(mContext).getWritableDatabase();
     }
