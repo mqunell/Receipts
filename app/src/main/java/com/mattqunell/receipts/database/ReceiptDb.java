@@ -148,8 +148,13 @@ public class ReceiptDb {
                 output.append("**");
 
             // Extra newline if the next date is different
-            if (i + 1 < receipts.size() && !r.getDate().equals(receipts.get(i+1).getDate()))
-                output.append("\n");
+            if (i + 1 < receipts.size()) {
+                Receipt r2 = receipts.get(i + 1);
+                if (r.getDate().getMonth() != r2.getDate().getMonth() ||
+                        r.getDate().getDate() != r2.getDate().getDate()) {
+                    output.append("\n");
+                }
+            }
 
             output.append("\n");
         }
